@@ -6,4 +6,5 @@ include_once("/Login/login_index.php");
 echo '<pre>';
 echo print_r($_SESSION);
 echo '</pre>';
+
 ?>
