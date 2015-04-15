@@ -53,7 +53,9 @@ if (isset($_POST['Submit']))
                     
                 }
             }
-		}
+		} else {
+            $bo = 'Der findes ikke nogen bruger med det password';
+        }
 	}
 }
 // ================ Hvis ikke logget ind =============================
@@ -61,15 +63,16 @@ if (!isset($_SESSION['user']))
 {
 ?>
 <form method="post" action="">
-<input name="username" type="text" id="username" value="Username" class="headerlogin_class" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}"/>
-<input name="password" type="password" id="password" value="Password" class="headerlogin_class"/ onfocus="if (this.value == 'Password') {this.value = '';this.type='password';}" onblur="if (this.value == '') {this.value = 'Password';this.type='text';}"/>
+<input name="username" type="text" id="username" value="Brugernavn" class="headerlogin_class" onfocus="if (this.value == 'Brugernavn') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Brugernavn';}"/>
+<input name="password" type="password" id="password" value="Password" class="headerlogin_class"/ onfocus="if (this.value == 'Password') {this.value = '';this.type='password';}" onblur="if (this.value == '') {this.value = 'Password';this.type='password';}"/>
 <input type="submit" name="Submit" value="Login" class="headerlogin_login" />
-<?php // echo $bo; ?>
+<?php if(isset ($bo)){ echo $bo;} ?>
 </form>
 <?php 
-}
+}else {
  echo '<form action="" method="post">
 <input type="submit" name="logud" value="log ud" />
 </form>';
+}
 ?>
 
