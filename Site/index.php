@@ -1,10 +1,15 @@
-<?php
-ob_start();
-session_start();
-require_once("DBcon/dbconn.php");
-include_once("User_module/login.php");
-echo '<pre>';
-echo print_r($_SESSION);
-echo '</pre>';
-
-?>
+<?php include_once("include/html_headder.php") ?>
+<!-- bodywrap -->
+<div id="bodywrap" align="center">
+    <!-- header -->
+    <?php include_once("include/header.php") ?>
+    <!-- end header -->
+    <!-- contend -->
+    <?php include_once("include/content.php") ?>
+	<!-- end contend -->
+    <!-- Footer -->
+    <?php include_once("include/footer.php") ?>
+    <!-- end footer -->
+</div>	
+<!-- end bodywrap -->
+<?php include_once("include/html_end.php") ?>
