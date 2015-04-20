@@ -1,0 +1,110 @@
+/*---------------------------------------------------------*/
+/* ID elements 
+/*---------------------------------------------------------*/
+#page
+{
+    float:              left;
+}
+.info
+{
+    color:              Maroon; 
+}
+#kategorier
+{
+    width:              100%;
+}
+#navigation a
+{
+    font-size:          5px;
+    margin-bottom:      5px;    
+}
+#forum_navigation a
+{
+	font-size:10px;
+}
+
+/*---------------------------------------------------------*/
+/* Class elements 
+/*---------------------------------------------------------*/
+.anwser .date, .content
+{
+    color:              #666;
+/*    font-size:          0.7em;*/
+    padding:            5px;
+}
+.head
+{
+    border-bottom:      2px #000 solid;
+/*    padding:            5px;*/
+}
+.head2
+{
+/*    font-size:          0.8em;*/
+    color:              Maroon;
+    font-weight:        bold;
+    border-bottom:      2px solid black;
+    padding:            5px;
+	text-align:center;
+	vertical-align:bottom;
+}
+.head2_1
+{
+    border-bottom:      2px solid black;
+}
+.item
+{
+    border-left:        2px solid black;
+    border-bottom:      2px solid black;
+	
+    padding:            5px;
+}
+
+.item2
+{
+    border-left:        2px solid black;
+    border-bottom:      2px solid black;
+    padding:            5px;
+	background:			#999;
+}
+.last_item
+{
+	border-right:		2px solid black;
+}
+.bigtextboxes a:hover 
+{
+	color:#555;
+}
+.profil_image {
+	
+}
+.imgmax img {
+    max-width:620px;   
+    /*width: expression(this.width > 200 ? 200: true);*/
+}
+.btn_slet_reply
+{
+	background-image:url(/include/forum/icons/010b.png);
+	background-size:16px;
+	background-position:center;	
+	width:16px;
+	height:16px;
+	border:0px;
+	padding:0px;
+	vertical-align:middle;
+	display:inline-block;
+	margin:2px;
+	
+}
+.btn_ret_reply
+{
+	background-image:url(/include/forum/icons/011b.png);
+	background-size:16px;
+	background-position:center;
+	vertical-align:middle;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	border:0px;
+	padding:0px;
+
+}
