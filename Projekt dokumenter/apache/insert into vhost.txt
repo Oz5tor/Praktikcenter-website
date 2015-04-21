@@ -1,0 +1,8 @@
+<VirtualHost pc-tec.dev:80>
+    ServerAdmin webmaster@pc-tec.dev
+    DocumentRoot "E:/xampp/htdocs/Website/Site/"
+    ServerName pc-tec.dev
+    ServerAlias www.pc-tec.dev
+    ErrorLog "logs/pc-tec.dev-error.log"
+    CustomLog "logs/pc-tec.dev-access.log" common
+</VirtualHost>
