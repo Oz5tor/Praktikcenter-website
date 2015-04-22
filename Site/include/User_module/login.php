@@ -1,10 +1,4 @@
 <?php
-// ================= Log ud ==========================================
-if (isset($_POST['logud']))
-{
-	session_destroy();
-	header ("location: index.php?side=$side");
-}
 // =========================== Log Ind ===============================
 if (isset($_POST['Submit']))
 {
@@ -18,8 +12,8 @@ if (isset($_POST['Submit']))
 	else
 		if ((isset($username)) or (isset($pass)))
 	{
-		$username= mysqli_real_escape_string($db_conn,strip_tags ($username));
-		$pass = mysqli_real_escape_string($db_conn,strip_tags ($pass));
+		$username= mysqli_real_escape_string($db_conn,strip_tags($username));
+		$pass = mysqli_real_escape_string($db_conn,strip_tags($pass));
 		//$pass = md5($pass);
         $pass = hash('sha512', $pass);
 		$query="SELECT * FROM user WHERE username ='$username' && password ='$pass'";
@@ -47,12 +41,12 @@ if (isset($_POST['Submit']))
                     $perm_result = mysqli_query ($db_conn,$perm_sql) or die (mysqli_error($db_conn));
                     while($perm_row = mysqli_fetch_assoc($perm_result))
                     {
-                        //echo $perm_row['perName'];
                         $_SESSION[$perm_row['perName']] = 1;
                     }
                     
                 }
             }
+            header("Location: index.php?p=$side");
 		} else {
             $bo = 'Der findes ikke nogen bruger med det password';
         }
