@@ -1,4 +1,7 @@
-head>
+<?php
+session_start();
+?>
+<head>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -9,6 +12,12 @@ head>
     </script>
 
 </head>
+<?php 
+if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
+    
+}
+    else {header('location: ../../index.php');} 
+?>
 <form action="#" method="get">
     <table>
         <tr>
@@ -65,4 +74,7 @@ head>
         </tr>
     </table>
 </form>
-<?php echo '<pre>'; print_r($_POST); echo '</pre>'; ?>
+<?php
+echo '<pre>'; print_r($_POST); echo '</pre>'; 
+echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
+?>
