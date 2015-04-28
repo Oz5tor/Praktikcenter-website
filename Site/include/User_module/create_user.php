@@ -71,27 +71,8 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
         </tr>
       
         
-         
+           
         
-        <tr>
-             <td>Kompetancer: </td>
-            <td>
-                
-                 <checkbox>
-                   
-                    <?php 
-                        $sqlState="select * from skills";
-                        $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-                       
-
-                        while ($row = mysqli_fetch_assoc($sql_result)){ ?>
-                         <input type="checkbox" name="skill" value="<?php $row['id']; ?>"> <?php echo $row['skill']; ?><br>
-                      <?php  }
-                    ?>
-                </checkbox>
-            </td>            
-        </tr>
-            
             <tr>
              <td>Instruktør: </td>
             <td>
@@ -111,6 +92,26 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
             </td>            
         </tr>
         
+           <tr>
+            <td>Kompetancer: </td>
+            <td>
+                <select required multiple>
+                   
+                   
+                    <?php 
+                        $sqlState="select * from skills";
+                        $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+                       
+
+                        while ($row = mysqli_fetch_assoc($sql_result)){?>
+                         <option value="<?php $row['skill']; ?>"> <?php echo $row['skill']; ?></option><?php
+                        }
+                   ?>
+                    
+                </select>
+      
+              </td>
+        </tr>
         
         <tr>
             <td>Addresse: </td>
