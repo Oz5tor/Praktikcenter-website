@@ -31,7 +31,15 @@ session_start();
     $( "#datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
-        dateFormat: "dd-mm-yy"
+        dateFormat: "yy/mm/dd"
+    });
+  });
+      
+      $(function() {
+    $( "#datepicker2" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+        dateFormat: "yy/mm/dd"
     });
   });
   </script>
@@ -59,10 +67,11 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
                 <input type="text" min="2" max="50" id="lName" name="lName" required>
             </td>
         </tr>
+       
         <tr>
             <td>F&oslash;selsdag: </td>
             <td>
-                <input type="text" id="datepicker" name="datepicker" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" required>
+                <input type="text" id="datepicker" name="datepicker" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required>
             </td>
         </tr>
         
@@ -86,7 +95,12 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
             </td>
         </tr>
       
-        
+          <tr>
+            <td>Afslutning af uddannelse: </td>
+            <td>
+                <input type="text" id="datepicker2" name="edu_datepicker" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required>
+            </td>
+        </tr>
            
         
             <tr>
@@ -158,6 +172,8 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
 echo '<pre>'; print_r($_GET); echo '</pre>';
 echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
 
+
+
 $fName      = $_GET['fName'];
 $lName      = $_GET['lName'];
 $add        = $_GET['address'];
@@ -166,8 +182,9 @@ $inst       = $_GET['inst'];
 $phone      = $_GET['phone'];
 $email      = $_GET['email'];
 $edu        = $_GET['edu'];
-$username   = strtolower(substr($fName,0,2).substr($lName,0,2));
+$eduEnd     = $_GET['edu_datepicker'];
 $password   = "abc1234";
-$sqlState   ="insert into user(username,password,fName,lName,email,phone,address,bDay,edu) values('$username','$password','$fName','$lName','$email',$phone,'$add','$bday',$edu)";
+
+$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd) values(,'$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd')";
                         $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 ?>
