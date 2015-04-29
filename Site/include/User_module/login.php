@@ -16,7 +16,7 @@ if (isset($_POST['Submit']))
 		$pass = mysqli_real_escape_string($db_conn,strip_tags($pass));
 		//$pass = md5($pass);
         $pass = hash('sha512', $pass);
-		$query="SELECT * FROM user WHERE username ='$username' && password ='$pass'";
+		$query="SELECT * FROM user WHERE email ='$username' && password ='$pass'";
         
         //$query="SELECT * FROM user WHERE username ='$username' && pass ='$pass'";
 		$result=mysqli_query($db_conn,$query) or die (mysqli_error($db_conn));
@@ -57,7 +57,7 @@ if (!isset($_SESSION['user']))
 {
 ?>
 <form method="post" action="">
-<input name="username" type="text" id="username" value="Brugernavn" class="headerlogin_class" onfocus="if (this.value == 'Brugernavn') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Brugernavn';}"/>
+<input name="username" type="email" id="username" value="Brugernavn" class="headerlogin_class" onfocus="if (this.value == 'Brugernavn') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Brugernavn';}"/>
 <input name="password" type="password" id="password" value="Password" class="headerlogin_class"/ onfocus="if (this.value == 'Password') {this.value = '';this.type='password';}" onblur="if (this.value == '') {this.value = 'Password';this.type='password';}"/>
 <input type="submit" name="Submit" value="Login" class="headerlogin_login" />
 <?php if(isset ($bo)){ echo $bo;} ?>

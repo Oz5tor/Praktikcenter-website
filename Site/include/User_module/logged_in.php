@@ -36,8 +36,6 @@ if (isset($_POST['logud']))
 <div style="float:left">
 <table>
 	<tr>
-    	<td>User:</td>
-        <td><?php echo $user_row['username']; ?> | </td>
     	<td>Navn:</td>
         <td><?php echo $user_row['fName'].' '.$user_row['lName']; ?> | </td>
     	<td>Title:</td>
