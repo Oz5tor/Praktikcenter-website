@@ -11,6 +11,7 @@ session_start();
 ?>
 
 <head>
+    <!--
  <link rel="stylesheet"href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -19,7 +20,22 @@ session_start();
             $("#datepicker").datepicker();
         });
     </script>
-
+-->
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+        dateFormat: "dd-mm-yy"
+    });
+  });
+  </script>
+    
 </head>
 <?php 
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
@@ -53,8 +69,8 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
         <tr>
             <td>Udannelses: </td>
             <td>
-                <select required>
-                    <option selected value="">V&aelig;lg Udannelse</option>
+                <select required name="edu">
+                    <option selected name="edu" value="edu">V&aelig;lg Udannelse</option>
                    
                     <?php 
                         $sqlState="select * from edu";
@@ -76,8 +92,8 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
             <tr>
              <td>Instruktør: </td>
             <td>
-                <select required>
-                    <option selected value="">V&aelig;lg Instuktør</option>
+                <select required name="inst">
+                    <option selected value="" >V&aelig;lg Instuktør</option>
                    
                     <?php 
                         $sqlState="Select user.fName, user.lName, user.id From roles Inner Join userRoles On roles.id = userRoles.roleId Inner Join user On user.id = userRoles.userId where roles.id = 2";
@@ -95,7 +111,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
            <tr>
             <td>Kompetancer: </td>
             <td>
-                <select required multiple>
+                <select required multiple name="skills">
                    
                    
                     <?php 
@@ -104,7 +120,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
                        
 
                         while ($row = mysqli_fetch_assoc($sql_result)){?>
-                         <option value="<?php $row['skill']; ?>"> <?php echo $row['skill']; ?></option><?php
+                         <option value="<?php echo $row['id']; ?>"> <?php echo $row['skill']; ?></option><?php
                         }
                    ?>
                     
@@ -139,6 +155,19 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     </table>
 </form>
 <?php
-echo '<pre>'; print_r($_GET); echo '</pre>'; 
+echo '<pre>'; print_r($_GET); echo '</pre>';
 echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
+
+$fName      = $_GET['fName'];
+$lName      = $_GET['lName'];
+$add        = $_GET['address'];
+$bday       = $_GET['datepicker'];
+$inst       = $_GET['inst'];
+$phone      = $_GET['phone'];
+$email      = $_GET['email'];
+$edu        = $_GET['edu'];
+$username   = strtolower(substr($fName,0,2).substr($lName,0,2));
+$password   = "abc1234";
+$sqlState   ="insert into user(username,password,fName,lName,email,phone,address,bDay,edu) values('$username','$password','$fName','$lName','$email',$phone,'$add','$bday',$edu)";
+                        $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 ?>
