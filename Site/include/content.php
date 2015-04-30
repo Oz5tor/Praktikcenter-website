@@ -9,38 +9,34 @@
   
   <div id="bigtextboxes" class="bigtextboxes">
   
-  <?php 
-    if($side == 'Forum')
-	{
-		if(isset($_SESSION['user']))
-		{
-		include_once("include/forum/forum_index.php");
-		}
-		else
-		{
-			echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
-		};
-	}
-	else
-	if($side == 'Forside') 
-	{
-		include_once("include/news.php");
-	}
-	else
-	if($side == 'Contact')
-	{
-		include_once("include/public_contact.php");
-	}
-	else
-	if($admin == 'Nyhed')
-	{
-		include_once("include/administartion/opret_ret_slet_nyhed.php");
-	}
-    else  
-    if($admin == 'Menu')
-	{
-		include_once("include/administartion/opret_ret_slet_nyhed.php");
-	}
+  <?php
+// ==========================================================
+    // Admionistration pages
+    switch($admin){
+        case 'Nyhed':
+            include_once('include/administartion/CRUD_nyhed.php');
+        break;
+    }
+// ==========================================================
+    // Public pages
+    switch($page) {
+        case 'Forside':
+            include_once("include/news.php");
+            break;
+        case 'Forum':
+            if(isset($_SESSION['user']))
+            {
+            include_once("include/forum/forum_index.php");
+            }
+            else
+            {
+                echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
+            };
+            break;
+    /*    default: // for dynamic pages not yet created.
+            include_once("include/news.php");
+            break;*/
+    }
     ?>
   </div>
   <?php 
