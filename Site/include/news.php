@@ -13,7 +13,7 @@
 	{
 		$current_page = 1;
 	}
-	$pager_url = "index.php?p=$page&npage="; // sayfalamanin yapildigi adres
+	$pager_url = "index.php?page=$page&npage="; // sayfalamanin yapildigi adres
 	$inactive_page_tag = 'id="current_page"'; // aktif olmayan sayfa linki için biçim
 	$previous_page_text = '&nbsp;<img style="vertical-align:bottom;" src="img/a2-prev.png" />&nbsp;'; // önceki sayfa metni (resim de olabilir <img src="... gibi)
 	$next_page_text = '<img src="img/a3-next.png" style="vertical-align:bottom;" />&nbsp; '; // sonraki sayfa metni (resim de olabilir <img src="... gibi)
