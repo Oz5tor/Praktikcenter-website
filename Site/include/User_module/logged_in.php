@@ -44,8 +44,8 @@ if (isset($_POST['logud']))
 </table>
 </div>
 <div style="float:left">
-<a href="index.php?a=Nyhed">Nyheds administartion <strong>(BETA)</strong></a>
-    <a href="index.php?a=menu">Menu Admin</a>
+<a href="index.php?administration=Nyhed">Nyheds administartion <strong>(BETA)</strong></a>
+    <a href="index.php?administration=menu">Menu Admin</a>
 <!--<a href="index.php?side=a_menu">Nyheds administartion <strong>(BETA)</strong></a>-->
 </div>
 
