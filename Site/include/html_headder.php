@@ -9,18 +9,7 @@ require_once('DBcon/dbconn.php');
 // ================================================================
 //unset($_SESSION['admin']);
 // ===================== Global variables =========================
-if(isset($_GET['p']))
-{
-	$side = mysqli_real_escape_string($db_conn,strip_tags($_GET['p']));
-}
-else
-{
-	$side = 'Forside';
-}
-if(isset($_GET['a']))
-{
-	$admin = mysqli_real_escape_string($db_conn,strip_tags($_GET['a']));
-}
+require_once('include/URL_controller/url_controller.php');
 // ================================================================
 ?>
 <!DOCTYPE html>
@@ -33,7 +22,7 @@ if(isset($_GET['a']))
     <link href="img/icon.ico" rel="shortcut icon">
     <link href="style.css" rel="stylesheet">
     <link href="css/nav-style.css" rel="stylesheet">
-    <?php if($side == "Forum"){ echo'<link href="css/forum_layout.css" rel="stylesheet">';}?>
+    <?php if($page == "Forum"){ echo'<link href="css/forum_layout.css" rel="stylesheet">';}?>
     <!-- validator start -->
     <script type="text/javascript" src="js/validator.js"></script>
     <!-- validator slut -->
