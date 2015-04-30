@@ -17,19 +17,19 @@ require_once('include/URL_controller/url_controller.php');
     <head>
     <meta http-equiv="Content-Type" content="text/html">
     <meta charset="utf-8">
-
-    <title>TEC &raquo; Pratik Center : <?php echo $side; ?></title>
+        
+    <title><?php echo $html_headder_title; ?> : TEC &raquo; Pratik Center</title>
     <link href="img/icon.ico" rel="shortcut icon">
     <link href="style.css" rel="stylesheet">
     <link href="css/nav-style.css" rel="stylesheet">
-    <?php if($page == "Forum"){ echo'<link href="css/forum_layout.css" rel="stylesheet">';}?>
+    <?php if(isset($page) && ($page == "Forum")){ echo'<link href="css/forum_layout.css" rel="stylesheet">';}?>
     <!-- validator start -->
     <script type="text/javascript" src="js/validator.js"></script>
     <!-- validator slut -->
     <!-- jq sutff -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
     <!-- jq sutff -->
     
     <!-- Froala Editor sutff -->
