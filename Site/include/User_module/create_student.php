@@ -122,6 +122,24 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
             </td>            
         </tr>
         
+         <tr>
+             <td>Hovedforløb: </td>
+            <td>
+                <select required name="maincurse">
+                    <option selected value="" >V&aelig;lg Hovedforløb</option>
+                   
+                        <option value=1>Hovedforløb 1</option>;
+                        <option value=2>Hovedforløb 2</option>;
+                        <option value=3>Hovedforløb 3</option>;
+                        <option value=4>Hovedforløb 4</option>;
+                        <option value=5>Hovedforløb 5</option>;
+                        <option value=6>Hovedforløb 6</option>;
+                                    
+                </select>
+            </td>            
+        </tr>
+        
+        
            <tr>
             <td>Kompetancer: </td>
             <td>
@@ -183,8 +201,10 @@ $phone      = $_GET['phone'];
 $email      = $_GET['email'];
 $edu        = $_GET['edu'];
 $eduEnd     = $_GET['edu_datepicker'];
-$password   = "abc1234";
+$password   = hash('sha512', 'abc1234');
+$skills     = $_GET['skills'];
+$maincurse  = $_GET['maincurse'];
 
-$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd) values(,'$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd')";
-                        $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse')";
+mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 ?>
