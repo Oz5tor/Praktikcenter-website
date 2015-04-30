@@ -19,7 +19,10 @@
     }
 // ==========================================================
     // Public pages
-    switch($page) {
+    if(!isset($page)){
+    }
+    else {
+        switch($page) {
         case 'Forside':
             include_once("include/news.php");
             break;
@@ -33,9 +36,10 @@
                 echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
             };
             break;
-    /*    default: // for dynamic pages not yet created.
+          /*default: // for dynamic pages not yet created.
             include_once("include/news.php");
             break;*/
+        }
     }
     ?>
   </div>

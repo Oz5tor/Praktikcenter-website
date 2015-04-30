@@ -4,11 +4,11 @@ if(isset($_POST['opret_news']))
 {
 	$title = $_POST['title'];
 	$title = strip_tags($title);
-	$title = mysql_real_escape_string($title);
+	$title = mysqli_real_escape_string($db_conn, $title);
 	$txt = $_POST['textarea'];
 	$date = time();
 	$new_sql = "INSERT INTO news (txt, date, titel) VALUES ('$txt', '$date', '$title')";
-	mysql_query($new_sql) or die (mysql_error());
+	mysqli_query($db_conn,$new_sql) or die (mysqli_error($db_conn));
 	header("location:index.php");
 }
 // ret Nyhed
@@ -16,11 +16,11 @@ if(isset($_POST['ret_agenda']))
 {
 	$title = $_POST['ret_title'];
 	$title = strip_tags($title);
-	$title = mysql_real_escape_string($title);
+	$title = mysqli_real_escape_string($db_conn,$title);
 	$id = $_POST['id'];
 	$txt = $_POST['text'];
 	$new_sql = "UPDATE news SET txt = '$txt', titel = '$title' WHERE id = '$id'";
-	mysql_query($new_sql) or die (mysql_error());
+	mysqli_query($db_conn,$new_sql) or die (mysqli_error($db_conn));
 	header("location:index.php");
 }
 // slet Nyhed
@@ -29,7 +29,7 @@ if(isset($_POST['slet_event']))
 	$id = $_POST['agenda'];
 	
 	$slet_sql = "DELETE FROM news WHERE id = '$id'";
-	mysql_query($slet_sql) or die (mysql_error());
+	mysqli_query($db_conn,$slet_sql) or die (mysqli_error($db_conn));
 	header("location:index.php?p=$side");
 }
 ?>
@@ -53,8 +53,8 @@ if(isset($_POST['slet_event']))
 				<option>V&aelig;lg Nyhed</option>
 				<?php
 					$ret_agenda_sql = "SELECT * FROM news ORDER BY id DESC";
-					$ret_agenda_result = mysql_query($ret_agenda_sql) or die (mysql_error());
-					while ($ret_agenda_row = mysql_fetch_assoc($ret_agenda_result))
+					$ret_agenda_result = mysqli_query($db_conn,$ret_agenda_sql) or die (mysqli_error($db_conn));
+					while ($ret_agenda_row = mysqli_fetch_assoc($ret_agenda_result))
 					{
 						?>
 						<option value="<?php echo $ret_agenda_row['id']; ?>"><?php echo date('j.F Y | H:i', $ret_agenda_row['date']); ?></option>
@@ -70,8 +70,8 @@ if(isset($_POST['slet_event']))
 	$id = $_POST['agenda'];
 	
 	$up_agenda_sql = "SELECT * FROM news WHERE id = '$id'";
-	$up_agenda_result = mysql_query($up_agenda_sql) or die (mysql_error());
-	$up_agenda_row = mysql_fetch_assoc($up_agenda_result);
+	$up_agenda_result = mysqli_query($db_conn,$up_agenda_sql) or die (mysqli_error($db_conn));
+	$up_agenda_row = mysqli_fetch_assoc($up_agenda_result);
 	?>
     <fieldset>
     <legend>Ret Nyhed</legend>
@@ -94,8 +94,8 @@ if(isset($_POST['slet_event']))
             <?php
                 
                 $ret_agenda_sql = "SELECT * FROM news ORDER BY id DESC";
-                $ret_agenda_result = mysql_query($ret_agenda_sql) or die (mysql_error());
-                while ($ret_agenda_row = mysql_fetch_assoc($ret_agenda_result))
+                $ret_agenda_result = mysqli_query($db_conn,$ret_agenda_sql) or die (mysqli_error($db_conn));
+                while ($ret_agenda_row = mysqli_fetch_assoc($ret_agenda_result))
                 {
                     ?>
                     <option value="<?php echo $ret_agenda_row['id']; ?>"><?php echo $ret_agenda_row['titel']; ?></option>
