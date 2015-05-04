@@ -3,7 +3,7 @@
 if (isset($_POST['logud']))
 {
 	session_destroy();
-	header ("location: index.php?side=$side");
+	header ("location: index.php");
 }
 // =========== hvis logget ind =======================================
 

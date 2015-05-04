@@ -46,7 +46,7 @@ if (isset($_POST['Submit']))
                     
                 }
             }
-            header("Location: index.php?page=$side");
+            header("Location: index.php?page=$page");
 		} else {
             $bo = 'Der findes ikke nogen bruger med det password';
         }
