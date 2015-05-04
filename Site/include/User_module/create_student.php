@@ -190,8 +190,8 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
 echo '<pre>'; print_r($_GET); echo '</pre>';
 echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
 
-
-
+if(isset($_GET['create_user']))
+{
 $fName      = $_GET['fName'];
 $lName      = $_GET['lName'];
 $add        = $_GET['address'];
@@ -207,4 +207,20 @@ $maincurse  = $_GET['maincurse'];
 
 $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse')";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+
+$sqlState   = "select id from user where email = '$email'";
+
+
+$sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+                       
+
+$row = mysqli_fetch_assoc($sql_result);
+    
+       $user_id= $row['id'];
+        
+    
+$sqlState   ="insert into userRoles values('$user_id',1)";
+mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+}
+
 ?>
