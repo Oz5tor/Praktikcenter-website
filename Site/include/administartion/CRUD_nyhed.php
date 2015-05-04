@@ -6,6 +6,7 @@ if(isset($_POST['opret_news']))
 	$title = strip_tags($title);
 	$title = mysqli_real_escape_string($db_conn, $title);
 	$txt = $_POST['textarea'];
+    $txt = mysqli_real_escape_string($db_conn, $txt);
 	$date = time();
 	$new_sql = "INSERT INTO news (txt, date, titel) VALUES ('$txt', '$date', '$title')";
 	mysqli_query($db_conn,$new_sql) or die (mysqli_error($db_conn));
@@ -19,6 +20,7 @@ if(isset($_POST['ret_agenda']))
 	$title = mysqli_real_escape_string($db_conn,$title);
 	$id = $_POST['id'];
 	$txt = $_POST['text'];
+    $txt = mysqli_real_escape_string($db_conn, $txt);
 	$new_sql = "UPDATE news SET txt = '$txt', titel = '$title' WHERE id = '$id'";
 	mysqli_query($db_conn,$new_sql) or die (mysqli_error($db_conn));
 	header("location:index.php");
