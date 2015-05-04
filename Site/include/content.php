@@ -16,6 +16,12 @@
         case 'Nyhed':
             include_once('include/administartion/CRUD_nyhed.php');
         break;
+        case 'Opret Bruger':
+            include_once('include/User_module/create_student.php');
+        break;
+        case 'Opret Instruktør':
+            include_once('include/User_module/create_instructor.php');
+        break;
     }
 // ==========================================================
     // Public pages
