@@ -40,7 +40,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     else {header('location: index.php');} 
 ?>
 
-<h1>Opret ny Instruktør</h1>
+<h1>Opret ny Værkføre</h1>
 <form action="#" method="post">
     <table>
         <tr>
@@ -115,7 +115,7 @@ $row = mysqli_fetch_assoc($sql_result);
     
        $user_id= $row['id'];
         
-$sqlState   ="insert into userRoles values('$user_id',2)";
+$sqlState   ="insert into userRoles values('$user_id',3)";
     mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 }
 // ===============================================================================
