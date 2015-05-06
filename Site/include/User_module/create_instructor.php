@@ -6,22 +6,10 @@ session_start();
     $db_password="A123linux2013"; // Mysql password
     $db_name="c1praktikcenter"; // Database name
     $db_conn = mysqli_connect("$db_host","$db_username","$db_password","$db_name");
-
- 
 ?>
 
 <head>
-    <!--
- <link rel="stylesheet"href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>
--->
-    
+      
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -49,11 +37,11 @@ session_start();
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     
 }
-    else {header('location: ../../index.php');} 
+    else {header('location: index.php');} 
 ?>
 
 <h1>Opret ny Instruktør</h1>
-<form action="#" method="get">
+<form action="#" method="post">
     <table>
         <tr>
             <td>Fornavn: </td>
@@ -74,15 +62,12 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
                 <input type="text" id="datepicker" name="datepicker" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required>
             </td>
         </tr>
-        
-        
-      
-                    
+              
           
         <tr>
             <td>Addresse: </td>
             <td>
-                <input type="text" id="address" name="address" max="100" required>
+                <input type="text" id="address" min="9" name="address" max="100" required>
             </td>
         </tr>
         <tr>
@@ -105,38 +90,33 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     </table>
 </form>
 <?php
-echo '<pre>'; print_r($_GET); echo '</pre>';
+// ===============================================================================
+echo '<pre>'; print_r($_POST); echo '</pre>';
 echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
-
-if(isset($_GET['create_user']))
+// ===============================================================================
+if(isset($_POST['create_user']))
 {
-$fName      = $_GET['fName'];
-$lName      = $_GET['lName'];
-$add        = $_GET['address'];
-$bday       = $_GET['datepicker'];
-
-$phone      = $_GET['phone'];
-$email      = $_GET['email'];
-
+$fName      = $_POST['fName'];
+$lName      = $_POST['lName'];
+$add        = $_POST['address'];
+$bday       = $_POST['datepicker'];
+$phone      = $_POST['phone'];
+$email      = $_POST['email'];
 $password   = hash('sha512', 'abc1234');
 
-
 $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay) values('$password','$fName','$lName','$email',$phone,'$add','$bday')";
-mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-
+    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+// ===============================================================================
 $sqlState   = "select id from user where email = '$email'";
 
-
 $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-                       
-
+// ===============================================================================                     
 $row = mysqli_fetch_assoc($sql_result);
     
        $user_id= $row['id'];
         
-    
 $sqlState   ="insert into userRoles values('$user_id',2)";
-mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 }
-
+// ===============================================================================
 ?>
