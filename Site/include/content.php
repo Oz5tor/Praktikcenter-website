@@ -22,6 +22,11 @@
         case 'Opret Instruktør':
             include_once('include/User_module/create_instructor.php');
         break;
+        
+        case 'Opret Værkføre':
+            include_once('include/User_module/create_forman.php');
+        break;
+
     }
 // ==========================================================
     // Public pages
