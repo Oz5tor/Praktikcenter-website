@@ -1,14 +1,54 @@
 <?php
-session_start();
+//session_start();
 //dbconnector:
-    $db_host="192.168.0.4"; // Host name
-    $db_username="c1root"; // Mysql username
-    $db_password="A123linux2013"; // Mysql password
-    $db_name="c1praktikcenter"; // Database name
-    $db_conn = mysqli_connect("$db_host","$db_username","$db_password","$db_name");
+  //  $db_host="192.168.0.4"; // Host name
+//    $db_username="c1root"; // Mysql username
+  //  $db_password="A123linux2013"; // Mysql password
+   // $db_name="c1praktikcenter"; // Database name
+    //$db_conn = mysqli_connect("$db_host","$db_username","$db_password","$db_name");
 
- 
+echo '<pre>'; print_r($_POST); echo '</pre>';
+//echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
+ foreach($_POST['skills'] as $key)
+         echo $key."\n";
+    
+// ===============================================================================
+if(isset($_POST['create_user']))
+{
+$fName      = $_POST['fName'];
+$lName      = $_POST['lName'];
+$add        = $_POST['address'];
+$bday       = $_POST['datepicker'];
+$inst       = $_POST['inst'];
+$phone      = $_POST['phone'];
+$email      = $_POST['email'];
+$edu        = $_POST['edu'];
+$eduEnd     = $_POST['edu_datepicker'];
+$password   = hash('sha512', 'abc1234');
+//$skills     = $_POST['skills'];
+$maincurse  = $_POST['maincurse'];
+
+$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse')";
+mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+// ===============================================================================
+$sqlState   = "select id from user where email = '$email'";
+$sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+$row = mysqli_fetch_assoc($sql_result);
+       $user_id= $row['id'];
+// ===============================================================================
+    
+$sqlState   ="insert into userRoles values('$user_id',1)";
+mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+}
+// ===============================================================================
+    
+        foreach($_POST['skills'] as $key){
+               
+            $sqlState   = "insert into userSkills(userId,skillId) values($user_id,$key)";
+                mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+                }
 ?>
+
 
 <head>
     <!--
@@ -49,11 +89,11 @@ session_start();
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     
 }
-    else {header('location: ../../index.php');} 
+    else {header('location: index.php');} 
 ?>
 
 <h1>Opret ny Elev</h1>
-<form action="#" method="get">
+<form action="" method="post">
     <table>
         <tr>
             <td>Fornavn: </td>
@@ -143,7 +183,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
            <tr>
             <td>Kompetancer: </td>
             <td>
-                <select required multiple name="skills">
+                <select required multiple name="skills[]">
                    
                    
                     <?php 
@@ -186,41 +226,3 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
         </tr>
     </table>
 </form>
-<?php
-echo '<pre>'; print_r($_GET); echo '</pre>';
-echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
-
-if(isset($_GET['create_user']))
-{
-$fName      = $_GET['fName'];
-$lName      = $_GET['lName'];
-$add        = $_GET['address'];
-$bday       = $_GET['datepicker'];
-$inst       = $_GET['inst'];
-$phone      = $_GET['phone'];
-$email      = $_GET['email'];
-$edu        = $_GET['edu'];
-$eduEnd     = $_GET['edu_datepicker'];
-$password   = hash('sha512', 'abc1234');
-$skills     = $_GET['skills'];
-$maincurse  = $_GET['maincurse'];
-
-$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse')";
-mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-
-$sqlState   = "select id from user where email = '$email'";
-
-
-$sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-                       
-
-$row = mysqli_fetch_assoc($sql_result);
-    
-       $user_id= $row['id'];
-        
-    
-$sqlState   ="insert into userRoles values('$user_id',1)";
-mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-}
-
-?>
