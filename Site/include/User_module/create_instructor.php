@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 //dbconnector:
     $db_host="192.168.0.4"; // Host name
     $db_username="c1root"; // Mysql username
