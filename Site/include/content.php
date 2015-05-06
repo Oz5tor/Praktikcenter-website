@@ -16,7 +16,7 @@
         case 'Nyhed':
             include_once('include/administartion/CRUD_nyhed.php');
         break;
-        case 'Opret Bruger':
+        case 'Opret Elev':
             include_once('include/User_module/create_student.php');
         break;
         case 'Opret Instruktør':
