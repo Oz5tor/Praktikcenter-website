@@ -96,14 +96,15 @@ echo '<pre>'; print_r($_SESSION); echo '</pre>';
 // ===============================================================================
 if(isset($_POST['create_user']))
 {
-$fName      = $_POST['fName'];
-$lName      = $_POST['lName'];
-$add        = $_POST['address'];
-$bday       = $_POST['datepicker'];
-$phone      = $_POST['phone'];
-$email      = $_POST['email'];
-$password   = hash('sha512', 'abc1234');
 
+$fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
+$lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
+$add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
+$bday       = mysqli_real_escape_string($db_conn,strip_tags($_POST['datepicker']));
+$phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
+$email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
+$password   = hash('sha512', 'abc1234');
+    
 $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay) values('$password','$fName','$lName','$email',$phone,'$add','$bday')";
     mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ===============================================================================

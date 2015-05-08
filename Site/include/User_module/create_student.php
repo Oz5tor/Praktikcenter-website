@@ -14,19 +14,20 @@ echo '<pre>'; print_r($_POST); echo '</pre>';
     
 // ===============================================================================
 if(isset($_POST['create_user']))
+    
 {
-$fName      = $_POST['fName'];
-$lName      = $_POST['lName'];
-$add        = $_POST['address'];
-$bday       = $_POST['datepicker'];
-$inst       = $_POST['inst'];
-$phone      = $_POST['phone'];
-$email      = $_POST['email'];
-$edu        = $_POST['edu'];
-$eduEnd     = $_POST['edu_datepicker'];
+$fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
+$lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
+$add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
+$bday       = mysqli_real_escape_string($db_conn,strip_tags($_POST['datepicker']));
+$inst       = mysqli_real_escape_string($db_conn,strip_tags($_POST['inst']));
+$phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
+$email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
+$edu        = mysqli_real_escape_string($db_conn,strip_tags($_POST['edu']));
+$eduEnd     = mysqli_real_escape_string($db_conn,strip_tags($_POST['eduEnd']));
 $password   = hash('sha512', 'abc1234');
 //$skills     = $_POST['skills'];
-$maincurse  = $_POST['maincurse'];
+$maincurse  = mysqli_real_escape_string($db_conn,strip_tags($_POST['maincurse']));
 
 $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse')";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
@@ -42,7 +43,7 @@ mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 }
 // ===============================================================================
     
-        foreach($_POST['skills'] as $key){
+        foreach(mysqli_real_escape_string($db_conn,strip_tags($_POST['skills'])) as $key){
                
             $sqlState   = "insert into userSkills(userId,skillId) values($user_id,$key)";
                 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
@@ -51,16 +52,7 @@ mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 
 
 <head>
-    <!--
- <link rel="stylesheet"href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>
--->
+  
     
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
