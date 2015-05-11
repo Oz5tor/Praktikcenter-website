@@ -25,7 +25,7 @@
                    
                     <?php 
                         $sqlState="select * from eqType";
-                        $sql_tyOption = mysqli_query($db_conn, $sqlState) or die                                             (mysqli_error($db_conn));
+                        $sql_tyOption = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
                        
 
                         while ($row = mysqli_fetch_assoc($sql_tyOption)){
@@ -70,7 +70,7 @@ if(isset($_POST['show_info'])){
     $eqType = $_POST['eqType'];
         $producent = $_POST['producent'];
 
-        $sqlState="select * from equipment where fk_prodId = '$producent' AND fk_eqTypeId = '$eqType' OR fk_prodId = '$producent' OR fk_eqTypeId = '$eqType'";
+        $sqlState="select * from equipment where (fk_prodId = '$producent' AND fk_eqTypeId = '$eqType') OR (fk_prodId = '$producent' OR fk_eqTypeId = '$eqType')"; //WIP
         $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
         $sql_row = mysqli_num_rows($sql_result);
     if ($sql_row >=1)
