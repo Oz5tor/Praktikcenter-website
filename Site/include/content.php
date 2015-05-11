@@ -47,9 +47,9 @@
                 echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
             };
             break;
-          /*default: // for dynamic pages not yet created.
-            include_once("include/news.php");
-            break;*/
+          default: // for dynamic pages not yet created.
+            include_once("include/edit_pages.php");
+            break;
         }
     }
     ?>
@@ -58,6 +58,8 @@
 echo "<pre>";
 print_r($_SESSION);
 echo "</pre>";
+echo 'Page = '.$page.'<br/>';
+echo 'Subpage = '.$subpage;
 echo "<br />".time();
 ?>
 </div>
