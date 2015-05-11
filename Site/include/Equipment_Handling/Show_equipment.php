@@ -14,7 +14,5 @@
 
     $sqlState="select * from equipment";
     $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-    $meh = 'penis';
 
 ?>
-<div class="Equipment"><button type="button" onclick="alert(<?php echo $meh ?>)">Elever</button></div>
