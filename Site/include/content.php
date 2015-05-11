@@ -62,4 +62,11 @@ echo 'Page = '.$page.'<br/>';
 echo 'Subpage = '.$subpage;
 echo "<br />".time();
 ?>
+    <fieldset>
+    <legend>Midlertidige administrations links</legend>
+    <a href="index.php?administration=Nyhed">Nyheds administartion <strong>(BETA)</strong></a><br>
+    <a href="index.php?administration=menu">Menu Admin</a><br>
+    <a href="index.php?administration=Opret Elev">Opret Elev</a><br>
+    <a href="index.php?administration=Opret Instruktør">Opret Instruktør</a><br>
+</fieldset>
 </div>
