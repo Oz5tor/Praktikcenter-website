@@ -26,6 +26,17 @@
         case 'Opret Værkføre':
             include_once('include/User_module/create_forman.php');
         break;
+        
+        case 'Projekt Oversigt':
+            include_once('include/Project_Handling/Show_projects.php');
+        break;
+        
+        
+        case 'Opret nyt projekt':
+            include_once('include/Project_Handling/Create_project.php');
+        break;
+       
+        
 
     }
 // ==========================================================
@@ -58,8 +69,6 @@
 echo "<pre>";
 print_r($_SESSION);
 echo "</pre>";
-echo 'Page = '.$page.'<br/>';
-echo 'Subpage = '.$subpage;
 echo "<br />".time();
 ?>
     <fieldset>
@@ -68,5 +77,8 @@ echo "<br />".time();
     <a href="index.php?administration=menu">Menu Admin</a><br>
     <a href="index.php?administration=Opret Elev">Opret Elev</a><br>
     <a href="index.php?administration=Opret Instruktør">Opret Instruktør</a><br>
+    <a href="index.php?administration=Opret Værkføre">Opret Værkføre</a><br>
+    <a href="index.php?administration=Projekt Oversigt">Projekt Oversigt</a><br>
+    <a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a><br>
 </fieldset>
 </div>

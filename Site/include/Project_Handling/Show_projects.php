@@ -9,35 +9,34 @@
 ?>
 
 <h1>Projekt oversigt</h1>
+Dato:
+<fieldset>
 <?php
 
-$sqlState = "select name from project";
-$sql_result = $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-    
-    while($row = mysqli_fetch_assoc($sql_result)){
-        $proName[]= $row['name']; 
-    }
-        
-$members ="";
-foreach ($proName as $name){
-    
-    $sqlState="Select user.fName, user.lName From project Inner Join userProject On project.id = userProject.projectId Inner Join user On user.id = userProject.userId where       project.name ='$name'";
-    
-    $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-    
-    while($row = mysqli_fetch_assoc($sql_result)){
-        $members.= $row['fName']." ".$row['lName'].", "; 
-    }
-                            
-?> 
-    
 
+$selctProjects_sql = "SELECT * from project";
+$sql_result = $sql_result = mysqli_query($db_conn, $selctProjects_sql) or die (mysqli_error($db_conn));
+while($row = mysqli_fetch_assoc($sql_result)){
+   // udtræk af collonner
+    $name = $row['name'];
+    $start = $row['start'];
+    $end = $row['end'];
+    $proID = $row['id'];
+    // henter deltager på projectet
+    $student_sql = "Select * From userProject Inner Join user On user.id = userProject.userId where projectid = '$proID'";
+    $student_sql_result = mysqli_query($db_conn, $student_sql) or die (mysqli_error($db_conn));
+    while($student = mysqli_fetch_assoc($student_sql_result)){       
+        $members[] = $student['fName'].' '.$student['lName'].', ';
+    }
+    // udskrivning af selve projecterne
+    ?>
     <div class="Project">
-        <button type="button" onclick="alert('<?php echo $members?>')">Elever</button>
-        <?php echo $name ?>
-    </div>
-
-<?php
-$members =""; }
-unset($name); 
+        <button type="button" onclick="alert('<?php foreach($members as $member){echo $member;}?>')">Elever</button>
+        <?php echo $name; ?> <?php $length = $end - $start; echo $length; ?>
+    </div>    
+    <?php
+    // nulstiller arrayet så det er klart til næste project
+    unset($members);
+}
 ?>
+</fieldset>
