@@ -1,12 +1,6 @@
 <?php 
-// ================= Log ud ==========================================
-if (isset($_POST['logud']))
-{
-	session_destroy();
-	header ("location: index.php");
-}
 // =========== hvis logget ind =======================================
-
+/*
 	$user = $_SESSION['user'];
 	$user_sql = "Select * From user WHERE id = '$user'";
 	$user_result = mysqli_query($db_conn,$user_sql) or die (mysqli_error($db_conn));
@@ -46,8 +40,5 @@ if (isset($_POST['logud']))
 <div style="float:left">
 <!--<a href="index.php?side=a_menu">Nyheds administartion <strong>(BETA)</strong></a>-->
 </div>
-
-<form action="" method="post">
-<input type="submit" name="logud" value="log ud" />
-</form>
-</div>
+*/
+?>

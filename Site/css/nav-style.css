@@ -95,3 +95,13 @@ nav ul ul ul {
 	left: 100%;
 	top: -1px;
 }
+.logout{ /* logout button style */
+    width: 100%;
+    background: none!important;
+    border: none;
+    padding: none!important;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-shadow: inherit;
+}

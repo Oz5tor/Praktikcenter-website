@@ -55,5 +55,11 @@
                         </ul>
                 </li>
 <?php       }?>
+        <?php
+        if(isset($_SESSION['user'])) {
+            include_once('include/Navigation/user_area.php');
+        }
+        ?>
+        
     </ul>
 </nav>
