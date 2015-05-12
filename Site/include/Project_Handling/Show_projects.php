@@ -1,3 +1,4 @@
+
 <?php
 
 //dbconnector:
@@ -9,7 +10,7 @@
 ?>
 
 <h1>Projekt oversigt</h1>
-Dato:
+
 <fieldset>
 <?php
 
@@ -30,9 +31,11 @@ while($row = mysqli_fetch_assoc($sql_result)){
     }
     // udskrivning af selve projecterne
     ?>
-    <div class="Project">
-        <button type="button" onclick="alert('<?php foreach($members as $member){echo $member;}?>')">Elever</button>
-        <?php echo $name; ?> <?php $length = $end - $start; echo $length; ?>
+    <div id= "Project" class="Project" onmouseover="DisplayMessage(<?php foreach($members as $member){echo $member;} ?> onmouseout="UndisplayMessage()">
+       <fieldset>
+        
+        
+           <?php echo $name; ?> <?php $length = $end - $start; echo $length; ?></fieldset>
     </div>    
     <?php
     // nulstiller arrayet så det er klart til næste project
@@ -40,3 +43,10 @@ while($row = mysqli_fetch_assoc($sql_result)){
 }
 ?>
 </fieldset>
+
+
+<?php //kode til at vise alle medlemmer i projektet
+
+//<?php foreach($members as $member){echo $member;} 
+
+?>
