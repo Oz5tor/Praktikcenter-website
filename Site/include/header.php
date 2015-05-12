@@ -21,7 +21,7 @@
 	?>
     </div>
     <div id="navbox">
-      <?php include_once("include/navbox.php") ?>
+      <?php include_once("include/Navigation/navbox.php") ?>
     </div>
     <!-- end navbox --> 
   </div>
