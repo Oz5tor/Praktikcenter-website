@@ -1,10 +1,11 @@
 <?php
-
-if (isset($_POST['submit']))
+if(isset($_SESSION['DynamicEditPages']) == 1)
 {
+  if (isset($_POST['submit']))
+  {
     $temp_userid = $_SESSION['user'];
     $temp_time = time();
-    $new_txt = mysqli_real_escape_string($db_conn,strip_tags($_POST['textarea']));
+    $new_txt = mysqli_real_escape_string($db_conn,$_POST['textarea']);
     if($new_txt == ''){
         $new_txt = 'Denne side har endnu ikke nogen tekst';
     }
@@ -56,11 +57,14 @@ if (isset($_POST['submit']))
 			header("location:index.php?page=$page&subpage=$subpage");	
 		}
 	}
+  }  
 }
+
+
 ?>
 <?php
 // side_text admin
-if(isset($_SESSION['user']))
+if((isset($_SESSION['DynamicEditPages']) == 1) && (isset($action) == 'Edit'))
 {
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -97,6 +101,10 @@ else
 		$page_txt_result = mysqli_query($db_conn,$page_txt_sql) or die (mysqli_error($db_conn));
 		$page_txt_row = mysqli_fetch_assoc($page_txt_result);
 		echo $page_txt_row['text'];
+        if(isset($_SESSION['DynamicEditPages']) == 1)
+        {
+            echo "<hr><b><a href='index.php?page=$page&action=Edit'>Ret Denne Side</a></b>";
+        }
 	}
 	else
 	if($subpage != '')
@@ -105,6 +113,10 @@ else
 		$page_txt_result = mysqli_query($db_conn,$page_txt_sql) or die (mysqli_error($db_conn));
 		$page_txt_row = mysqli_fetch_assoc($page_txt_result);
 		echo $page_txt_row['text'];
+        if(isset($_SESSION['DynamicEditPages']) == 1)
+        {
+            echo "<hr><b><a href='index.php?page=$page&subpage=$subpage&action=Edit'>Ret Denne Side</a></b>";
+        }
 	}
 }
 ?>
