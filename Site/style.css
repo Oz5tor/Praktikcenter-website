@@ -162,11 +162,7 @@ background:;
 	border-radius: 25px;
 	-moz-border-radius: 25px
 }
-img {
-	max-width: 100%;
-	height: auto;
-	width: auto\9;
-}
+
 /* ---------------		Text format, color & size.	--------------- */
 a {
 	font-size: 14px;
