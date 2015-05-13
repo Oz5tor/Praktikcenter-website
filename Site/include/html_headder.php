@@ -20,8 +20,9 @@ require_once('include/URL_controller/url_controller.php');
         
     <title><?php echo $html_headder_title; ?> : TEC &raquo; Pratik Center</title>
     <link href="img/icon.ico" rel="shortcut icon">
-    <link href="style.css" rel="stylesheet">
-    <link href="css/nav-style.css" rel="stylesheet">
+        <link href="css/nav-style.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+    
     <?php if(isset($page) && ($page == "Forum")){ echo'<link href="css/forum_layout.css" rel="stylesheet">';}?>
     <!-- validator start -->
     <script type="text/javascript" src="js/validator.js"></script>
@@ -51,51 +52,54 @@ require_once('include/URL_controller/url_controller.php');
     <script src="froala_editor/js/plugins/video.min.js"></script>
     <script src="froala_editor/js/libs/beautify/beautify-html.js"></script>
 	<script src="froala_editor/js/froala_editor.min.js"></script>
+    <!-- <script src="froala_editor/js/plugins/media_manager.min.js"></script> -->
     <script>
-$(function()
-{
-	$('#traad').editable(
-	{
-		minHeight: 200,
-		width: 750,
-		borderColor: '#000000',
-		language: 'da',
-		imageUploadURL: 'upload.php',
-		imagesLoadURL: '/uploads',
-		inlineMode: false,
+        $(function()
+        {
+            $('#traad').editable(
+            {
+                minHeight: 200,
+                width: 750,
+                borderColor: '#000000',
+                language: 'da',
+                imageUploadURL: 'upload.php',
+                imagesLoadURL: '/uploads',
+                inlineMode: false,
 
-	})
-});
+            })
+        });
 
-$(function()
-{
-	$('#nyhed').editable(
-	{
-		minHeight: 200,
-		width: 750,
-		borderColor: '#000000',
-		language: 'da',
-		imageUploadURL: 'upload.php',
-		imagesLoadURL: '/uploads',
-		inlineMode: false,
+        $(function()
+        {
+            $('#nyhed').editable(
+            {
+                minHeight: 200,
+                width: 750,
+                borderColor: '#000000',
+                language: 'da',
+                imageUploadURL: 'upload.php',
+                imagesLoadURL: '/uploads',
+                //imagesLoadURL: '/load_images.php',
+                //imageDeleteURL: 'delete_image.php',
+                inlineMode: false,
+                imageResize: true,
+            })
+        });
 
-	})
-});
+        $(function()
+        {
+            $('.traad').editable(
+            {
+                minHeight: 200,
+                width: 626,
+                borderColor: '#000000',
+                language: 'da',
+                imageUploadURL: 'upload.php',
+                imagesLoadURL: '/uploads',
+                inlineMode: false,
 
-$(function()
-{
-	$('.traad').editable(
-	{
-		minHeight: 200,
-		width: 626,
-		borderColor: '#000000',
-		language: 'da',
-		imageUploadURL: 'upload.php',
-		imagesLoadURL: '/uploads',
-		inlineMode: false,
-
-	})
-});
+            })
+        });
 	</script>   
     <!-- Froala Editor sutff -->
     <!-- Test area -->

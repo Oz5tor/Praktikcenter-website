@@ -29,13 +29,19 @@ else
 <li>
     <img src="img/icons/001w.png"> <?php echo $user_row['fName'].' '.$user_row['lName'] ?>
     <ul>
-        <li>
-	       <img class="nav_profile_img" src="img/profile/<?php echo $user_row['pic']; ?>" />&nbsp;
+        <li class="user">
+	       <div style="width:250px;" class="nav_profile">
+            <img src="img/profile/<?php echo $user_row['pic']; ?>" />
             <?php echo 'Title: '.$title; ?>
+            <div style="clear:both;"></div>
+           </div>
+           
         </li>
+        <li class="user"><a><img src="img/icons/003w.png" />&nbsp;Min Profil</a></li>
+        <li class="user"><a><img src="img/icons/003w.png" />&nbsp;Mine projector</a></li>
         <li>
             <form action="" method="post">
-                <input type="submit" class="logout" name="logud" value="log ud" />
+                <input type="submit" class="logout" name="logud" value="Log ud" />
             </form>
         </li>
     </ul>
