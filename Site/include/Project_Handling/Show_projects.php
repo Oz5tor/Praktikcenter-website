@@ -31,11 +31,14 @@ while($row = mysqli_fetch_assoc($sql_result)){
     }
     // udskrivning af selve projecterne
     ?>
-    <div id= "Project" class="Project" onmouseover="DisplayMessage(<?php foreach($members as $member){echo $member;} ?> onmouseout="UndisplayMessage()">
+    <div id= "Project" class="Project">
        <fieldset>
         
         
-           <?php echo $name; ?> <?php $length = $end - $start; echo $length; ?></fieldset>
+           <h3><?php echo $name; ?></h3> <?php $startDate = gmdate("d-m-Y",$start); $endDate = gmdate("d-m-Y",$end); ?><table border="1"><tr>
+           <td><?php echo "Start dato: ".$startDate;?></td> <td rowspan="2">Dage tilbage: <?php $date = date_create(); $currentDate = date_timestamp_get($date); $dayLeft = $end - $currentDate; $PrintDLeft = $dayLeft / 86400 % 2200; echo $PrintDLeft; ?></td></tr>
+           <tr><td><?php echo " Slut dato: ".$endDate ?></td>
+           </tr></table></fieldset>
     </div>    
     <?php
     // nulstiller arrayet så det er klart til næste project
