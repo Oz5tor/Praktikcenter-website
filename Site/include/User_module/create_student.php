@@ -1,17 +1,4 @@
 <?php
-//session_start();
-//dbconnector:
-  //  $db_host="192.168.0.4"; // Host name
-//    $db_username="c1root"; // Mysql username
-  //  $db_password="A123linux2013"; // Mysql password
-   // $db_name="c1praktikcenter"; // Database name
-    //$db_conn = mysqli_connect("$db_host","$db_username","$db_password","$db_name");
-
-echo '<pre>'; print_r($_POST); echo '</pre>';
-//echo '<pre>'; print_r($_SESSION); echo '</pre>'; 
- foreach($_POST['skills'] as $key)
-         echo $key."\n";
-    
 // ===============================================================================
 if(isset($_POST['create_user']))
     
@@ -40,43 +27,17 @@ $row = mysqli_fetch_assoc($sql_result);
     
 $sqlState   ="insert into userRoles values('$user_id',1)";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+// ===============================================================================
+
+    foreach(mysqli_real_escape_string($db_conn,strip_tags($_POST['skills'])) as $key){       
+        $sqlState   = "insert into userSkills(userId,skillId) values($user_id,$key)";
+        mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+    }
+    
+
 }
 // ===============================================================================
-    
-        foreach(mysqli_real_escape_string($db_conn,strip_tags($_POST['skills'])) as $key){
-               
-            $sqlState   = "insert into userSkills(userId,skillId) values($user_id,$key)";
-                mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-                }
 ?>
-
-
-<head>
-  
-    
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-        dateFormat: "yy/mm/dd"
-    });
-  });
-      
-      $(function() {
-    $( "#datepicker2" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-        dateFormat: "yy/mm/dd"
-    });
-  });
-  </script>
-    
-</head>
 <?php 
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     

@@ -31,6 +31,23 @@ require_once('include/URL_controller/url_controller.php');
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <script>
+      $(function() {
+        $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+            dateFormat: "yy/mm/dd"
+        });
+      });
+
+          $(function() {
+        $( "#datepicker2" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+            dateFormat: "yy/mm/dd"
+        });
+      });
+    </script>
     <!-- jq sutff -->
     
     <!-- Froala Editor sutff -->
