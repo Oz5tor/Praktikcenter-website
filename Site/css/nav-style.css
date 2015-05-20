@@ -62,6 +62,7 @@ nav ul li a {
 	color: #fff;
 	text-decoration: none;
 	text-align: left;
+    
 }
 nav ul ul {
 	display: none;
@@ -84,6 +85,7 @@ nav ul ul li:first-child {
 }
 nav ul ul li a {
 	color: #fff;
+    
 }
 nav ul ul li a:hover {
 	background: #bbb;
@@ -108,7 +110,6 @@ nav ul ul ul {
 }
 .user {
     font-size: 14px;
-	line-height: 19px;
 	text-decoration: none
 }
 .nav_profile img {
@@ -121,4 +122,6 @@ nav ul a {
  font-size: 12px;
  line-height: normal;
  text-align: center;
+}
+nav ul li ul a {
 }
