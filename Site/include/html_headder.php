@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-setlocale(LC_ALL, 'da_DK.ISO8859-1');
+header('Content-type: text/html; charset=utf-8');
 //error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR); // sætter php til kun at angive error's og ikke notice
 require_once('DBcon/dbconn.php');
 // ========================== KgPager =============================
@@ -17,6 +17,7 @@ require_once('include/URL_controller/url_controller.php');
     <head>
     <meta http-equiv="Content-Type" content="text/html">
     <meta charset="utf-8">
+        <!-- <meta charset="iso-8859-1"> -->
         
     <title><?php echo $html_headder_title; ?> : TEC &raquo; Pratik Center</title>
     <link href="img/icon.ico" rel="shortcut icon">
