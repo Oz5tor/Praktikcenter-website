@@ -58,7 +58,7 @@
                 echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
             };
             break;
-        case 'Min Profil':
+        case 'Profil':
             include_once("include/User_module/MyProfile.php");
             break;
         default: // for dynamic pages not yet created.

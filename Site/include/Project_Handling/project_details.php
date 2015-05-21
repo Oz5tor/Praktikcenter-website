@@ -73,13 +73,14 @@ echo "<h2>Projektbeskrivelse: </h2><br><i>".$desc."</i><br>";
     <td><b>Projekt deltagere</b>
         </td></tr>
      <?php 
-            $findProMembers_sql_state = "Select user.fName, user.lName From user Inner Join userProject On userProject.userId = user.id  where projectId = $id";
+            $findProMembers_sql_state = "Select user.id, user.fName, user.lName From user Inner Join userProject On userProject.userId = user.id  where projectId = $id";
 $findProMembers_sql_result = mysqli_query($db_conn, $findProMembers_sql_state) or die (mysqli_error($db_conn));
 
 while($row = mysqli_fetch_assoc($findProMembers_sql_result)){
-    echo "<tr><td>".$row['fName']."</td>";
+    ?> <tr><td><a href="?page=Profil&id=<?php echo $row["id"];?>"><?php echo ' '.$row['fName'].' '.$row['lName']; ?></a></td>
+    <?php 
 }
-            ?>
+  ?>
     
     </table>
 
