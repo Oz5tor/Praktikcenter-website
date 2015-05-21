@@ -3,10 +3,16 @@
   	<?php include_once("include/random_quote.php"); ?>
   </div>
 
+<?php 
+if($page == "Forside")
+{
+?>
   <div id="smalltextboxwrapper">
-	 <?php include_once("include/tre_random_pics.php"); ?>
+	<?php include_once("include/tre_random_pics.php"); ?>
   </div>
-  
+<?php
+}
+?>
   <div id="bigtextboxes" class="bigtextboxes">
   
   <?php
