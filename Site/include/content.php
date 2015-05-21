@@ -28,7 +28,7 @@
         break;
         
         case 'Projekt Oversigt':
-            include_once('include/Project_Handling/Show_projects.php');
+            include_once('include/Project_Handling/Index_project.php');
         break;
         
         
