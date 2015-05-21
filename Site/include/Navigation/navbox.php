@@ -1,8 +1,11 @@
 <nav>
     <ul>
+        <li><a href="index.php"><img src="img/icons/003w.png" /> Forside</a></li>
         <?php
             $nav_sql="SELECT * FROM main_menu_cat" ;
             $nav_result= mysqli_query($db_conn, $nav_sql) or die (mysqli_error($db_conn));
+            // ====================================================
+            // Menu Category be created
             while ($nav_row= mysqli_fetch_assoc($nav_result)) 
             {
                 $nav_cat_id=$nav_row['id'];
