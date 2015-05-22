@@ -37,7 +37,7 @@ else
            </div>
            
         </li>
-        <li class="user"><a href="?page=Min Profil"><img src="img/icons/003w.png" />&nbsp;Min Profil</a></li>
+        <li class="user"><a href="?page=Profil&id=<?php echo $_SESSION['user']; ?>"><img src="img/icons/003w.png" />&nbsp;Min Profil</a></li>
         <li class="user"><a><img src="img/icons/003w.png" />&nbsp;Mine projector</a></li>
         <li>
             <form action="" method="post">

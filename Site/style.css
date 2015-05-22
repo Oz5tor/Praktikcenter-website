@@ -4,7 +4,8 @@ html, body {
 	height: 100%;
 	position: relative;
 	margin: 0;
-	padding: 0
+	padding: 0;
+
 }
 .div_content_center {
 	margin-left: auto;
@@ -137,6 +138,10 @@ background:;
 	float: right;
 }
 #bigtextboxes {
+    font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+	text-decoration: none
 	height: auto;
 	min-height: 200px;
 	width: 758px;

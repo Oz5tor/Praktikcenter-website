@@ -6,8 +6,8 @@ if(isset($_SESSION['DynamicEditPages']) == 1)
     $temp_userid = $_SESSION['user'];
     $temp_time = time();
     $new_txt = mysqli_real_escape_string($db_conn,$_POST['textarea']);
-    if($new_txt == ''){
-        $new_txt = 'Denne side har endnu ikke nogen tekst';
+    if(strip_tags($new_txt) == ''){
+        $new_txt = '<p>Denne side har endnu ikke nogen tekst</p>';
     }
 	if($page !='Forside' && $subpage =='')
 	{
