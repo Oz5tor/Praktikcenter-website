@@ -41,6 +41,11 @@ if($page == "Forside")
         case 'Opret nyt projekt':
             include_once('include/Project_Handling/Create_project.php');
         break;
+        
+        
+        case 'Opret ny opgave':
+            include_once('include/Project_Handling/Create_assignment.php');
+        break;
        
         
 
@@ -89,5 +94,6 @@ echo "<br />".time();
     <a href="index.php?administration=Opret Værkføre">Opret Værkføre</a><br>
     <a href="index.php?administration=Projekt Oversigt">Projekt Oversigt</a><br>
     <a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a><br>
+    <a href="index.php?administration=Opret ny opgave">Opret ny Opgave</a><br>
 </fieldset>
 </div>
