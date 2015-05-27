@@ -1,5 +1,6 @@
 <?php
 // ===============================================================================
+//Når brugeren har trykket på submint knappen vil denne kode blive eksekveret:
 if(isset($_POST['create_user']))
     
 {
