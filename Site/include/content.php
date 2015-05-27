@@ -4,7 +4,7 @@
   </div>
 
 <?php 
-if($page == "Forside")
+if(isset($page) == "Forside")
 {
 ?>
   <div id="smalltextboxwrapper">
