@@ -1,3 +1,14 @@
+<?php 
+// ===============================================================================
+if((isset ($_SESSION['user'])) && (isset($_SESSION['create_assignment']))){
+    
+}
+    else {header('location: index.php');} 
+// ===============================================================================
+if(isset($_POST['create_assignment']))
+    
+{
+?>
 <h1>Opret ny Opgave</h1>
 
 
@@ -43,9 +54,6 @@
                         <option value=85>95%</option>;
                         <option value=100>100%</option>;
                       
-                        
-                        
-                                    
                 </select>
             </td>            
         </tr>
@@ -60,3 +68,5 @@
         </tr>
     </table>
 </form>
+                    
+<?php }?>
