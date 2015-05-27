@@ -121,7 +121,7 @@ echo "Slut på projekt: ".date('d/m/Y', $end)."<br><br>";
                 echo"<tr><td>".$row['name']."</td><td>".$row['status']."</td></tr>";
             }
         ?>
-    
+    <form> <input type="submit" name="add_assignment" value="Tilføj opgave til projektet"></form>
    
 </table>
 
