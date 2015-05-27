@@ -1,14 +1,8 @@
 <?php 
 // ===============================================================================
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_assignment']))){
-    
-}
-    else {header('location: index.php');} 
-// ===============================================================================
-if(isset($_POST['create_assignment']))
-    
-{
-?>
+    ?>
+
 <h1>Opret ny Opgave</h1>
 
 
@@ -68,5 +62,10 @@ if(isset($_POST['create_assignment']))
         </tr>
     </table>
 </form>
-                    
-<?php }?>
+
+
+<?php
+    
+}
+    else {header('location: index.php');} 
+// ===============================================================================
