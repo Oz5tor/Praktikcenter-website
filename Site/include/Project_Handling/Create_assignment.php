@@ -1,5 +1,21 @@
 <?php 
 // ===============================================================================
+//Når brugeren har trykket på submint knappen vil denne kode blive eksekveret:
+if(isset($_POST['create_assignment']))
+    
+{
+$name           = mysqli_real_escape_string($db_conn,strip_tags($_POST['assignmentName']));
+$description    = mysqli_real_escape_string($db_conn,strip_tags($_POST['assignmentDescription']));
+$status         = mysqli_real_escape_string($db_conn,strip_tags($_POST['status']));
+$FK_ProId       = mysqli_real_escape_string($db_conn,strip_tags($_GET['id']));
+
+$sqlState   ="INSERT INTO assignment(name, description, status, FK_ProId) VALUES ('$name','$description','$status','$FK_ProId')";
+mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+// ===============================================================================
+header("location:index.php?administration=Projekt Oversigt&projectId=3");
+}
+
+// ===============================================================================
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_assignment']))){
     ?>
 
@@ -24,7 +40,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_assignment']))){
                <tr>
              <td>Hovedforløb: </td>
             <td>
-                <select required name="maincurse">
+                <select required name="status">
                     <option selected value="" >Status på opgave</option>
                    
                         <option value=5>5%</option>;
@@ -51,9 +67,6 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_assignment']))){
                 </select>
             </td>            
         </tr>
-        
-       
-        
         
         <tr>
             <td colspan="2">

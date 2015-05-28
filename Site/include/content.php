@@ -17,7 +17,7 @@ if(isset($page) == "Forside")
   
   <?php
 // ==========================================================
-    // Admionistration pages
+    // Adminstrative pages = sider med formulare så som opret bruger mm.
     switch($admin){
         case 'Nyhed':
             include_once('include/administartion/CRUD_nyhed.php');
@@ -46,9 +46,7 @@ if(isset($page) == "Forside")
         case 'Opret ny opgave':
             include_once('include/Project_Handling/Create_assignment.php');
         break;
-       
         
-
     }
 // ==========================================================
     // Public pages
@@ -56,9 +54,11 @@ if(isset($page) == "Forside")
     }
     else {
         switch($page) {
+        
         case 'Forside':
             include_once("include/news.php");
             break;
+        
         case 'Forum':
             if(isset($_SESSION['user']))
             {
@@ -69,9 +69,16 @@ if(isset($page) == "Forside")
                 echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
             };
             break;
+        
         case 'Profil':
             include_once("include/User_module/MyProfile.php");
             break;
+        
+        case 'Assignment_details':
+            include_once("include/Project_Handling/Assignment_details.php");
+            break;
+            
+            
         default: // for dynamic pages not yet created.
             include_once("include/edit_pages.php");
             break;
