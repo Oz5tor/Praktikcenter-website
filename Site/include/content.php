@@ -21,31 +21,28 @@ if(isset($page) == "Forside")
     switch($admin){
         case 'Nyhed':
             include_once('include/administartion/CRUD_nyhed.php');
-        break;
+            break;
         case 'Opret Elev':
             include_once('include/User_module/create_student.php');
-        break;
+            break;
         case 'Opret Instruktør':
             include_once('include/User_module/create_instructor.php');
-        break;
-        
+            break;
         case 'Opret Værkføre':
             include_once('include/User_module/create_forman.php');
-        break;
-        
+            break;
         case 'Projekt Oversigt':
             include_once('include/Project_Handling/Index_project.php');
-        break;
-        
-        
+            break;
         case 'Opret nyt projekt':
             include_once('include/Project_Handling/Create_project.php');
-        break;
-        
-        
+            break;
         case 'Opret ny opgave':
             include_once('include/Project_Handling/Create_assignment.php');
-        break;
+            break;
+        case 'Projekt Skabeloner':
+            include_once('include/Project_Handling/Activate_proTemp.php');
+            break;
         
     }
 // ==========================================================
@@ -58,7 +55,6 @@ if(isset($page) == "Forside")
         case 'Forside':
             include_once("include/news.php");
             break;
-        
         case 'Forum':
             if(isset($_SESSION['user']))
             {
@@ -73,7 +69,6 @@ if(isset($page) == "Forside")
         case 'Profil':
             include_once("include/User_module/MyProfile.php");
             break;
-        
         case 'Assignment_details':
             include_once("include/Project_Handling/Assignment_details.php");
             break;
@@ -102,5 +97,6 @@ echo "<br />".time();
     <a href="index.php?administration=Projekt Oversigt">Projekt Oversigt</a><br>
     <a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a><br>
     <a href="index.php?administration=Opret ny opgave">Opret ny Opgave</a><br>
+    <a href="index.php?administration=Projekt Skabeloner">Projekt Skabeloner</a><br>
 </fieldset>
 </div>
