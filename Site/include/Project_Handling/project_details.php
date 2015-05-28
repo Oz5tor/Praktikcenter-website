@@ -118,9 +118,13 @@ echo "Slut på projekt: ".date('d/m/Y', $end)."<br><br>";
             
             while($row = mysqli_fetch_assoc( $assignment_sql_result)){
                 
-                echo"<tr><td>".$row['name']."</td><td>".$row['status']."</td></tr>";
+              echo"<tr><td>"."<a href='?page=Assignment_details&id=".$row['id']."'>".$row['name']."</a></td><td>".$row['status']."</td></tr>";
             }
         ?>
+    <?php if(isset($_POST['add_assignment'])){
+            header("location:index.php?administration=Opret ny opgave&id=$proID");
+        } ?>
+    
     <form action="" method="post"> <input type="submit" name="add_assignment" value="Tilføj opgave til projektet"></form>
    
 </table>
