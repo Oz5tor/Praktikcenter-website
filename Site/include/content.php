@@ -72,8 +72,6 @@ if(isset($page) == "Forside")
         case 'Assignment_details':
             include_once("include/Project_Handling/Assignment_details.php");
             break;
-            
-            
         default: // for dynamic pages not yet created.
             include_once("include/edit_pages.php");
             break;

@@ -1,14 +1,3 @@
-
-<?php
-
-//dbconnector:
-    $db_host="192.168.0.4"; // Host name
-    $db_username="c1root"; // Mysql username
-    $db_password="A123linux2013"; // Mysql password
-    $db_name="c1praktikcenter"; // Database name
-    $db_conn = mysqli_connect("$db_host","$db_username","$db_password","$db_name");
-?>
-
 <h1>Projekt oversigt over aktive projekter</h1>
 
 <fieldset>
@@ -33,12 +22,26 @@ while($row = mysqli_fetch_assoc($sql_result)){
     ?><?php if($today[0]<$end){?>
     <div id= "Project" class="Project">
        <fieldset>
-        
-        
-           <h3><a href="?administration=Projekt Oversigt&projectId=<?php echo $proID; ?>"><?php echo $name; ?></a></h3> <?php $startDate = gmdate("d-m-Y",$start); $endDate = gmdate("d-m-Y",$end); ?><table border="1"><tr>
-           <td><?php echo "Start dato: ".$startDate;?></td> <td rowspan="2">Dage tilbage: <?php $date = date_create(); $currentDate = date_timestamp_get($date); $dayLeft = $end - $currentDate; $PrintDLeft = $dayLeft / 86400 % 2200; echo $PrintDLeft; ?></td></tr>
-           <tr><td><?php echo " Slut dato: ".$endDate ?></td>
-           </tr></table></fieldset>
+           <h3><a href="?administration=Projekt Oversigt&projectId=<?php echo $proID; ?>"><?php echo $name; ?></a></h3>
+           <?php $startDate = gmdate("d-m-Y",$start); $endDate = gmdate("d-m-Y",$end); ?>
+           <table border="1">
+               <tr>
+                <td><?php echo "Start dato: ".$startDate;?></td>
+                <td rowspan="2">
+                    Dage tilbage: <?php $date = date_create();
+                                        $currentDate = date_timestamp_get($date);
+                                        $dayLeft = $end - $currentDate;
+                                        $PrintDLeft = $dayLeft / 86400 % 2200;
+                                        echo $PrintDLeft; ?>
+                </td>
+               </tr>
+               <tr>
+                <td>
+                    <?php echo " Slut dato: ".$endDate ?>
+                   </td>
+                </tr>
+           </table>
+        </fieldset>
     </div>    
     <?php
     // nulstiller arrayet så det er klart til næste project

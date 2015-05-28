@@ -60,6 +60,9 @@
 <?php       }?>
         <?php
         if(isset($_SESSION['user'])) {
+            ?>
+            <li><a href="index.php?page=Forum"><img src="img/icons/003w.png" /> Forum</a></li>
+            <?php
             include_once('include/Navigation/user_area.php');
         }
         ?>

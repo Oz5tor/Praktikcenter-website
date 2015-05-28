@@ -13,7 +13,7 @@ $user_row = mysqli_fetch_assoc($user_result);
 $title_sql = "Select * From userRoles
                 Inner Join roles On roles.id = userRoles.roleId
                 Inner Join user On user.id = userRoles.userId
-                Where user.id = '$user' Order By userRoles.roleId DESC";
+                Where user.id = '$user' Order By roleRank ASC";
 $title_result = mysqli_query($db_conn,$title_sql) or die (mysqli_error($db_conn));
 $user_title = mysqli_fetch_assoc($title_result);
 
