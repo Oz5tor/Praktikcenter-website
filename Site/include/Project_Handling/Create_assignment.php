@@ -12,7 +12,7 @@ $FK_ProId       = mysqli_real_escape_string($db_conn,strip_tags($_GET['id']));
 $sqlState   ="INSERT INTO assignment(name, description, status, FK_ProId) VALUES ('$name','$description','$status','$FK_ProId')";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ===============================================================================
-header("location:index.php?administration=Projekt Oversigt&projectId=3");
+header("location:index.php?administration=Projekt Oversigt&projectId=$FK_ProId");
 }
 
 // ===============================================================================
