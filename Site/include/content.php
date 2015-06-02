@@ -43,6 +43,13 @@ if(isset($page) == "Forside")
         case 'Projekt Skabeloner':
             include_once('include/Project_Handling/Activate_proTemp.php');
             break;
+        case 'Projekt Skabeloner info':
+            include_once('include/Project_Handling/ProTemp_details.php');
+            break;
+        
+        
+      
+       
         
     }
 // ==========================================================
