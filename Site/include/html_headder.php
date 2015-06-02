@@ -24,7 +24,16 @@ require_once('include/URL_controller/url_controller.php');
         <link href="css/nav-style.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
     
-    <?php if(isset($page) && ($page == "Forum")){ echo'<link href="css/forum_layout.css" rel="stylesheet">';}?>
+    <?php 
+    switch($page){
+        case 'Forum':
+            echo'<link href="include/forum/css/forum_layout.css" rel="stylesheet">';
+            break;
+        case 'Profil':
+            echo'<link href="include/User_module/css/profile.css" rel="stylesheet">';
+            break;
+    }
+        ?>
     <!-- validator start -->
     <script type="text/javascript" src="js/validator.js"></script>
     <!-- validator slut -->
