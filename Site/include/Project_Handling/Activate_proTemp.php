@@ -22,8 +22,13 @@ $proTemp_sql_state = "select * from proTemp";
 $proTemp_sql_result = mysqli_query($db_conn, $proTemp_sql_state) or die (mysqli_error($db_conn));
 
  while ($row = mysqli_fetch_assoc($proTemp_sql_result)){
-                           
-     echo"<tr><td>".$row['name']."</td><td>".$row['description']."</td><td>".$row['FK_CatId']."</td><td><a href=".$row['Frs_file'].">Kravsspec</a></td></tr>";
+     $proTempId = $row['id'];
+    $proTempName = $row['name'];?>                      
+   <tr><td>
+        </td>
+     <?php echo"<td>".$row['description']."</td>
+     <td>".$row['FK_CatId']."</td>
+     <td><a href=".$row['Frs_file'].">Kravsspec</a></td></tr>";
                         }
 
 
