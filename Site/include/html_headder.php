@@ -25,6 +25,7 @@ require_once('include/URL_controller/url_controller.php');
         <link href="style.css" rel="stylesheet">
     
     <?php 
+if(isset($page)){
     switch($page){
         case 'Forum':
             echo'<link href="include/forum/css/forum_layout.css" rel="stylesheet">';
@@ -33,6 +34,9 @@ require_once('include/URL_controller/url_controller.php');
             echo'<link href="include/User_module/css/profile.css" rel="stylesheet">';
             break;
     }
+}
+if(isset($admin)){
+}
         ?>
     <!-- validator start -->
     <script type="text/javascript" src="js/validator.js"></script>

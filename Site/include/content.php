@@ -51,26 +51,25 @@ if(isset($page) == "Forside")
     }
     else {
         switch($page) {
-        
         case 'Forside':
             include_once("include/news.php");
             break;
         case 'Forum':
-            if(isset($_SESSION['user']))
-            {
+            if(isset($_SESSION['user'])){
             include_once("include/forum/forum_index.php");
             }
-            else
-            {
+            else{
                 echo "<div style='text-align:center'><img src='img/pleaselogintocontinue.png' /></div>";
             };
             break;
-        
         case 'Profil':
             include_once("include/User_module/MyProfile.php");
             break;
         case 'Assignment_details':
             include_once("include/Project_Handling/Assignment_details.php");
+            break;
+        case 'Udstyrs Liste':
+            include_once("include/Equipment_Handling/Show_equipment.php");
             break;
         default: // for dynamic pages not yet created.
             include_once("include/edit_pages.php");
@@ -96,5 +95,6 @@ echo "<br />".time();
     <a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a><br>
     <a href="index.php?administration=Opret ny opgave">Opret ny Opgave</a><br>
     <a href="index.php?administration=Projekt Skabeloner">Projekt Skabeloner</a><br>
+    <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
 </fieldset>
 </div>
