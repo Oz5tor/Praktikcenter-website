@@ -45,12 +45,7 @@ if(isset($page) == "Forside")
             break;
         case 'Projekt Skabeloner info':
             include_once('include/Project_Handling/ProTemp_details.php');
-            break;
-        
-        
-      
-       
-        
+            break;   
     }
 // ==========================================================
     // Public pages
