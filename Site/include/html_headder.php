@@ -47,14 +47,34 @@ if(isset($admin)){
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
     <script>
       $(function() {
+        $( "#birthdayPicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: "yy/mm/dd",
+          maxDate: "-15y",
+          minDate: "-45y",
+          yearRange: "-45:+0"
+        });
+      });
+      $(function() {
+        $( "#eduEnd" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: "yy/mm/dd",
+          maxDate: "+8y",
+          minDate: "+1y",
+          yearRange: "-0:+8"
+        });
+      });
+        
+      $(function() {
         $( "#datepicker" ).datepicker({
           changeMonth: true,
           changeYear: true,
             dateFormat: "yy/mm/dd"
         });
       });
-
-          $(function() {
+      $(function() {
         $( "#datepicker2" ).datepicker({
           changeMonth: true,
           changeYear: true,
