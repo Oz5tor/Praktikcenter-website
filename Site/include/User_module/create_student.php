@@ -45,9 +45,6 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
             <td><input type="text" min="2" max="50" id="lName" name="lName" required></td>
         </tr>
         <tr>
-            
-        </tr>
-        <tr>
             <td>F&oslash;selsdag: </td>
             <td><input type="text" id="birthdayPicker" name="datepicker" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required></td>
             <td>Telefon: </td>
