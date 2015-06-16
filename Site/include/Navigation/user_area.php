@@ -29,16 +29,44 @@ else
 <li>
     <img src="img/icons/001w.png"> <?php echo $user_row['fName'].' '.$user_row['lName'] ?>
     <ul>
-        <li class="user">
-	       <div style="width:250px;" class="nav_profile">
+        <li id="profile_img" class="user">
             <img src="img/profile/<?php echo $user_row['pic']; ?>" />
-            <?php echo 'Title: '.$title; ?>
-            <div style="clear:both;"></div>
-           </div>
-           
         </li>
         <li class="user"><a href="?page=Profil&id=<?php echo $_SESSION['user']; ?>"><img src="img/icons/003w.png" />&nbsp;Min Profil</a></li>
-        <li class="user"><a><img src="img/icons/003w.png" />&nbsp;Mine projector</a></li>
+        <li class="user"><img src="img/icons/003w.png" />&nbsp;Projekter
+            <ul>
+                <li><a href="index.php?administration=Projekt Oversigt">Projekt Oversigt</a></li>
+                <?php
+                if(isset($_SESSION['create_project']) == 1){
+                ?>
+                <li><a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a></li>
+                <li><a href="index.php?administration=Projekt Skabeloner">Projekt Skabeloner</a></li>
+                <?php 
+                }
+                ?>
+            </ul>
+        </li>
+        <?php 
+        if(isset($_SESSION['create_user']) == 1){
+        ?>
+        <li class="user"><img src="img/icons/003w.png" />&nbsp;Brugere
+            <ul>
+                <li><a href="index.php?administration=Opret Elev">Opret Elev</a></li>
+                <li><a href="index.php?administration=Opret Instruktør">Opret Instruktør</a></li>
+                <li><a href="index.php?administration=Opret Værkføre">Opret Værkføre</a></li>
+            </ul>
+        </li>
+        <?php
+        }
+        ?>
+        
+        <li class="user"><img src="img/icons/003w.png" />&nbsp;Administration
+            <ul>
+                <li><a href="index.php?administration=Nyhed">Nyheds administartion</a></li>
+                <li><a href="index.php?administration=menu">Menu Admin "WIP"</a></li>
+            </ul>
+        </li>
+    <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
         <li>
             <form action="" method="post">
                 <input type="submit" class="logout" name="logud" value="Log ud" />
