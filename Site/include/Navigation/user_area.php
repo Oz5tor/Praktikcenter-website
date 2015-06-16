@@ -35,7 +35,7 @@ else
         <li class="user"><a href="?page=Profil&id=<?php echo $_SESSION['user']; ?>"><img src="img/icons/003w.png" />&nbsp;Min Profil</a></li>
         <li class="user"><img src="img/icons/003w.png" />&nbsp;Projekter
             <ul>
-                <li><a href="index.php?administration=Projekt Oversigt">Projekt Oversigt</a></li>
+                <li><a href="index.php?page=Projekt Oversigt">Projekt Oversigt</a></li>
                 <?php
                 if(isset($_SESSION['create_project']) == 1){
                 ?>
@@ -66,7 +66,6 @@ else
                 <li><a href="index.php?administration=menu">Menu Admin "WIP"</a></li>
             </ul>
         </li>
-    <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
         <li>
             <form action="" method="post">
                 <input type="submit" class="logout" name="logud" value="Log ud" />

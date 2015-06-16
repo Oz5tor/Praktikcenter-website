@@ -8,9 +8,6 @@ th {
     background-color: gray;
     color: white;
 }
-
-}
-
     </style>
 </head>
 

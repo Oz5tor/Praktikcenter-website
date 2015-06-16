@@ -31,9 +31,6 @@ if(isset($page) == "Forside")
         case 'Opret Værkføre':
             include_once('include/User_module/create_forman.php');
             break;
-        case 'Projekt Oversigt':
-            include_once('include/Project_Handling/Index_project.php');
-            break;
         case 'Opret nyt projekt':
             include_once('include/Project_Handling/Create_project.php');
             break;
@@ -73,6 +70,9 @@ if(isset($page) == "Forside")
         case 'Udstyrs Liste':
             include_once("include/Equipment_Handling/Show_equipment.php");
             break;
+        case 'Projekt Oversigt':
+            include_once('include/Project_Handling/Index_project.php');
+            break;
         default: // for dynamic pages not yet created.
             include_once("include/edit_pages.php");
             break;
@@ -88,15 +88,6 @@ echo "<br />".time();
 ?>
     <fieldset>
     <legend>Midlertidige administrations links</legend>
-    <a href="index.php?administration=Nyhed">Nyheds administartion <strong>(BETA)</strong></a><br>
-    <a href="index.php?administration=menu">Menu Admin</a><br>
-    <a href="index.php?administration=Opret Elev">Opret Elev</a><br>
-    <a href="index.php?administration=Opret Instruktør">Opret Instruktør</a><br>
-    <a href="index.php?administration=Opret Værkføre">Opret Værkføre</a><br>
-    <a href="index.php?administration=Projekt Oversigt">Projekt Oversigt</a><br>
-    <a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a><br>
-    <a href="index.php?administration=Opret ny opgave">Opret ny Opgave</a><br>
-    <a href="index.php?administration=Projekt Skabeloner">Projekt Skabeloner</a><br>
     <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
 </fieldset>
 </div>
