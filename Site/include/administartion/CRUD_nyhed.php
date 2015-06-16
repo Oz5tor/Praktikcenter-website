@@ -1,4 +1,6 @@
 <?php
+if(isset($_SESSION['CreateNews'])== 1)
+{
 // opret Nyhed
 if(isset($_POST['opret_news']))
 {
@@ -108,3 +110,7 @@ if(isset($_POST['slet_event']))
         <input type="submit" name="slet_event" onclick="return confirm('Er du sikker p&aring; at du vil slette?');" value="Slet" />
     </form>
 </fieldset>
+    <?php
+}else{
+    header('location:index.php');
+}?>
