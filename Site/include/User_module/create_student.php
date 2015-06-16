@@ -78,7 +78,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
         <tr>
             <td>Udannelses: </td>
             <td colspan="3">
-                <select required name="edu">
+                <select required id="edu" name="edu">
                     <option selected name="edu" value="edu">V&aelig;lg Udannelse</option>
                     <?php 
                         $sqlState="select * from edu";
@@ -105,15 +105,39 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
              </td>
             <td>Kompetancer: </td>
             <td rowspan="9">
-                <select size="8" multiple name="skills[]">  
+                <div class="container">
                     <?php 
-                        $sqlState="select * from skills";
-                        $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-                        while ($row = mysqli_fetch_assoc($sql_result)){?>
-                         <option value="<?php echo $row['id']; ?>"> <?php echo $row['skill']; ?></option><?php
-                        }
-                   ?>
-                </select>
+                $sqlState="select * from edu";
+                $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+                while ($row = mysqli_fetch_assoc($sql_result)){
+                    $temp_eduID = $row['id'];
+                ?>
+                <div class="<?php echo $temp_eduID ?>">
+                    <select multiple name="skills[]">
+                <?php
+                  $sql_edu_skill="Select * From edu_skills where fk_edu_id = $temp_eduID ";
+                  $sql_edu_skill = mysqli_query($db_conn, $sql_edu_skill) or die (mysqli_error($db_conn));
+                  while ($row_edu_skill = mysqli_fetch_assoc($sql_edu_skill)){
+                      ?>
+                    <option value="<?php echo $row_edu_skill['fk_skill_id']; ?>">
+                        <?php
+                            $temp_skillID = $row_edu_skill['fk_skill_id'];
+                            $sql_skill="Select * From skills where id = $temp_skillID ";
+                            $sql_skill = mysqli_query($db_conn, $sql_skill) or die (mysqli_error($db_conn));
+                            while ($row_skill = mysqli_fetch_assoc($sql_skill)){
+                                echo $row_skill['skill'];
+                            }
+                        ?>
+                    </option>
+                    <?php
+                  }
+                ?>
+                    </select>
+                </div>
+                <?php
+                }
+                ?>
+                </div>
               </td> 
         </tr>
         <tr>
@@ -124,3 +148,15 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
 <?php
 }else {header('location: index.php');} 
 ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#edu').bind('change', function() {
+        var elements = $('div.container').children().hide(); // hide all the elements
+        var value = $(this).val();
+
+        if (value.length) { // if somethings' selected
+            elements.filter('.' + value).show(); // show the ones we want
+        }
+    }).trigger('change');
+});
+</script>
