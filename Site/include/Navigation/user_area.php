@@ -39,7 +39,7 @@ else
                 <?php
                 if(isset($_SESSION['create_project']) == 1){
                 ?>
-                <li><a href="index.php?administration=Opret nyt projekt">Opret Ny Projekt Skabelon</a></li>
+                <li><a href="index.php?administration=Opret nyt projekt">Opret nyt projekt</a></li>
                 <li><a href="index.php?administration=Projekt Skabeloner">Projekt Skabeloner</a></li>
                 <?php 
                 }
@@ -59,6 +59,7 @@ else
         <?php
         }
         ?>
+        
         <li class="user"><img src="img/icons/003w.png" />&nbsp;Administration
             <ul>
                 <li><a href="index.php?administration=Nyhed">Nyheds administartion</a></li>
