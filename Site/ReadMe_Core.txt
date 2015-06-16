@@ -1,0 +1,37 @@
+========================================================================
+======================== Core Read Me ==================================
+========================================================================
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+------------------------------------------------------------------------
+Start date: june 2013
+Author: Tor "Topper" "Oz5tor" Soya. 
+Designer: Johny "Jonner" Jensen.
+Code language: PhP, MySQL, HTML, CSS 
+Lincens: 
+Develorpers:
+Last Update: aug 2013
+------------------------------------------------------------------------
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+------------------------------------------------------------------------
+permissions to be set:
+------------------------------------------------------------------------
+permissions is bein set in the login.php file in include folder.
+------------------------------------------------------------------------
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+------------------------------------------------------------------------
+whats files hold what parts:
+------------------------------------------------------------------------
+# index.php 			// the frist file theres loade
+# html_headder.php		// anything there comes before <body>
+# header.php			// holds the user UI for controling theire setings and such + Navbox.php which is the navigations on the site.
+# content.php			// holds anything wihtin the <DIV> box called #contend, and is where most of the site is spreading out from and it holds the debuggin functions.
+# footer.php			// holds the bottom of the site primary jsut the search bar.
+# tre.randompic.php		// holde the 3 random images at the top of the site.
+# random_quote.php		// shows a "random" quote of the day changing evrey day.
+# html_end.php			// just for have 1 file theres so awsome ot have and only holds 1 line of code.
+# news.php				// shows the news on the front page.
+# public_contact.php	// The conact form on the site where you can contact the varius departmens
+------------------------------------------------------------------------
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+========================================================================
+========================================================================
