@@ -28,10 +28,11 @@
 	while ($news_row = mysqli_fetch_assoc($albums_result))
 	{
 ?>   
+    
     <div class="drop_shadow" id="news_text">
 		<?php echo '<h2>'.$news_row['titel'].' </h2>'; ?>
 		<?php echo '<p>'.$news_row['txt'].'</p>'; ?>
-        <hr/>
+        <hr style="clear:both;"/>
     </div>
     <?php }
 
