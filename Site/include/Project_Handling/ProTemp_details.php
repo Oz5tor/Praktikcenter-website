@@ -33,10 +33,17 @@ $proTempDescription= $row['description'] ;
 
 <form>
     <table border="1">
-        <tr><td><b>Instruktør: </b></td><td><?php echo $instName; ?></td><td><b>Besrivelse: </b></td></tr>
-        <tr><td><b>Projektleder: </b></td><td> <select required name="proLeader">
+        <tr>
+            <td>
+                <b>Instruktør: </b>
+            </td>
+            <td><?php echo $instName; ?></td>
+            <td><b>Besrivelse: </b></td>
+        </tr>
+        <tr>
+            <td><b>Projektleder: </b></td>
+            <td> <select required name="proLeader">
                     <option selected name="proLeader" value="proLeader">Vælg projektleder</option>
-                   
                     <?php 
                         $sqlState="select * from user";
                         $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
@@ -46,8 +53,9 @@ $proTempDescription= $row['description'] ;
                            echo "<option value='".$row['id']."'>".$row['fName']." ".$row['lName']."</option>";
                         }
                     ?>
-                    
-                </select></td><td></td><td colspan="10"><?php echo $proTempDescription; ?></td></tr>
+                </select>
+            </td>
+            <td colspan="10"><?php echo $proTempDescription; ?></td></tr>
     </table>
  <input type="submit"  name="create_project" value="Aktiver Projektet">
 
