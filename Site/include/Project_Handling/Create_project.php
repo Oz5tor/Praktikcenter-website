@@ -38,8 +38,25 @@ $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
             <td>Projekt Beskrivelse:</td>
             <td><textarea cols="50" rows="5" name="projectDescription">Indtast en udførlig beskrivelse af projektet.</textarea></td>
         </tr>
-        <tr><td>Kategori</td><td><input type="text" min="2" max="40"  name="FK_CatId" required></td></tr>
-        <tr><td>Link til kravsspecifikation</td><td><input type="text" min="2" max="40"  name="Frs_fil" required></td></tr>
+    <tr>
+        <td>Kategori</td>
+        <td>
+            <select  name="FK_CatId" required>
+                <option value="">Vælg kategori</option>
+                <?php
+                $sql_cat_state="Select * from proTempCat";
+                $sql_cat_resault = mysqli_query($db_conn, $sql_cat_state) or die (mysqli_error($db_conn));
+                while ($row_cat = mysqli_fetch_assoc($sql_cat_resault)){
+                 ?> <option value="<?php echo $row_cat['id'] ?>"> <?php echo $row_cat['name'];?></option><?php
+                }
+                
+                ?>
+                    
+                
+            </select>
+        </td>
+    </tr>
+        <tr><td>Link til kravsspecifikation</td><td><input type="file" name="Frs_fil" required></td></tr>
         <tr>
             <td colspan="2">
                 <input type="submit"  name="create_project" value="Opret Projekt">
