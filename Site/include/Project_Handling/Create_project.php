@@ -38,7 +38,7 @@ $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
             <td>Projekt Beskrivelse:</td>
             <td><textarea cols="50" rows="5" name="projectDescription">Indtast en udførlig beskrivelse af projektet.</textarea></td>
         </tr>
-        <tr><td>kategori</td><td><input type="text" min="2" max="40"  name="FK_CatId" required></td></tr>
+        <tr><td>Kategori</td><td><input type="text" min="2" max="40"  name="FK_CatId" required></td></tr>
         <tr><td>Link til kravsspecifikation</td><td><input type="text" min="2" max="40"  name="Frs_fil" required></td></tr>
         <tr>
             <td colspan="2">
