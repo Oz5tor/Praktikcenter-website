@@ -34,6 +34,13 @@ if(isset($page)){
     }
 }
 if(isset($admin)){
+    switch($admin){
+        case 'Projekt Skabeloner info':
+            echo'<link href="include/Project_Handling/css/style.css" rel="stylesheet">';
+            break;
+    }
+}
+if(isset($admin)){
 }
         ?>
     <!-- validator start -->
