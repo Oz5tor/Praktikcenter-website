@@ -67,7 +67,7 @@ $phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
 $email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
 $password   = hash('sha512', 'abc1234');
     
-$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay) values('$password','$fName','$lName','$email',$phone,'$add','$bday')";
+$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay, fk_role_id) values('$password','$fName','$lName','$email',$phone,'$add','$bday','3')";
     mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ===============================================================================
 $sqlState   = "select id from user where email = '$email'";

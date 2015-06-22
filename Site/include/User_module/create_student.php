@@ -14,7 +14,7 @@ $eduEnd     = mysqli_real_escape_string($db_conn,strip_tags($_POST['eduEnd']));
 $password   = hash('sha512', 'abc1234');
 $maincurse  = mysqli_real_escape_string($db_conn,strip_tags($_POST['maincurse']));
 
-$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse')";
+$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse,fk_role_id) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse', '1')";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ===============================================================================
 $sqlState   = "select id from user where email = '$email'";
@@ -64,9 +64,7 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
                 <select required name="inst">
                     <option selected value="" >V&aelig;lg Instuktør</option>       
                     <?php 
-                        $sqlState="Select user.fName, user.lName, user.id From roles
-                                    Inner Join userRoles On roles.id = userRoles.roleId 
-                                    Inner Join user On user.id = userRoles.userId where roles.id = 2";
+                        $sqlState="Select * from user where fk_role_id = '2'";
                         $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
                         while ($row = mysqli_fetch_assoc($sql_result)){
                            echo "<option value='".$row['id']."'>".$row['fName']." ".$row['lName']."</option>";
