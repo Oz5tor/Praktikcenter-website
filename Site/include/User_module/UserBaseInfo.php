@@ -34,7 +34,7 @@
                     $PrintDLeft = $dayLeft / 86400 % 2200;  
                     // ====================
                     ?>
-                    <td><b>Tid Tilbage :</b></td>
+                    <td><b>Tid Tilbage:</b></td>
                     <td><?php echo $PrintDLeft;?> Dage</td>
                 </tr>
                 <tr>
