@@ -11,18 +11,36 @@ while ($row = mysqli_fetch_assoc($proTemp_sql_result)){
     $instName = $row['fName']." ".$row['lName'];
 }
 
-//laver dataudtræk fra database:
-
 $proTemp_sql_state = "select * from proTemp";
 $proTemp_sql_result = mysqli_query($db_conn, $proTemp_sql_state) or die (mysqli_error($db_conn));
 
 while ($row = mysqli_fetch_assoc($proTemp_sql_result)){
 $proTempName= $row['name'];
 $proTempDescription= $row['description'] ;
+$proTempId = $row['id'];
 }
+
+
+
+//Indsætter nyaktiveret projekt ind i databasen
+if(isset($_POST['activateProject']))
+    
+{    
+$proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
+$start          = mysqli_real_escape_string($db_conn,strip_tags($_POST['projektStart'])); 
+$slut           = mysqli_real_escape_string($db_conn,strip_tags($_POST['projektSlut'])); 
+$proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
+$proStart       = strtotime($start);
+$proSlut        = strtotime($slut);
+// ===============================================================================
+$sqlState   ="insert into project(name, leaderId, inst, start, end,FK_Protemp) values('$proTempName','$proLeader','$instId','$proStart','$proSlut','$proTempId');";
+mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+}
+//laver dataudtræk fra database:
+
 ?>
 <h1><?php echo $proTempName;?></h1>
-<form>
+<form method="post" action="">
     <table border="1">
         <tr>
             <td>
@@ -79,8 +97,15 @@ $proTempDescription= $row['description'] ;
                 </section>
             </td>
         </tr>
+        <tr>
+            <td><b>Start på projekt:</b></td>
+            <td><input type="text" id="datepicker" name="projektStart" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required></td>
+            <td><b>Afslutning af projekt: </b></td>
+            <td><input type="text" id="datepicker2" name="projektSlut" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required></td>
+        </tr>
+        
     </table>
- <input type="submit"  name="create_project" value="Aktiver Projektet">
+ <input type="submit"  name="activateProject" value="Aktiver Projektet">
 </form>
 
 
