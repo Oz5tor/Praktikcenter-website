@@ -16,7 +16,7 @@ if($temp_any >= 1){
             $end = $projects_row['end'];
             $proID = $projects_row['id'];
         ?>
-        <a href="?administration=Projekt Oversigt&projectId=<?php echo $proID; ?>">
+        <a href="?page=Projekt Oversigt&projectId=<?php echo $proID; ?>">
             <div id="projectsholder">
                 <div class="textCenter borderbottom"><b><p><?php echo $name; ?></p></b></div>
                 <div>
