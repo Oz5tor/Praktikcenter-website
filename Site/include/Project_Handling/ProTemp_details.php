@@ -36,7 +36,7 @@ $proTempDescription= $row['description'] ;
             <td> <select required name="proLeader">
                     <option selected name="proLeader" value="proLeader">Vælg projektleder</option>
                     <?php 
-                        $sqlState="select * from user";
+                        $sqlState="select * from user Where fk_role_id = 1";
                         $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
                        
 
@@ -56,9 +56,7 @@ $proTempDescription= $row['description'] ;
                         <!-- List of students start -->
                         <select id="leftValues" size="4" multiple>
                         <?php 
-                            $students_sql = "Select * From user 
-                                                Inner Join userRoles On user.id = userRoles.userId
-                                                Where roleId = '1'";
+                            $students_sql = "Select * From user Where fk_role_id = 1";
                             $students_result = mysqli_query($db_conn, $students_sql) or die (mysqli_error($db_conn));
                             while ($students_row = mysqli_fetch_assoc($students_result)){
                             ?>
