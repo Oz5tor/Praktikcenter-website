@@ -16,7 +16,7 @@ header("location:index.php?administration=Projekt Oversigt&projectId=$FK_ProId")
 }
 
 // ===============================================================================
-if((isset ($_SESSION['user'])) && (isset($_SESSION['create_assignment']))){
+if((isset ($_SESSION['user'])){
     ?>
 
 <h1>Opret ny Opgave</h1>

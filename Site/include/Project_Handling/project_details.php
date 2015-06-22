@@ -1,4 +1,3 @@
-<head>
 <style>
 table, td, th {
     border: 1px groove gray;
@@ -8,8 +7,7 @@ th {
     background-color: gray;
     color: white;
 }
-    </style>
-</head>
+</style>
 
 <?php 
 $id = $_GET['projectId'];
@@ -122,7 +120,11 @@ echo "Slut på projekt: ".date('d/m/Y', $end)."<br><br>";
             header("location:index.php?administration=Opret ny opgave&id=$proID");
         } ?>
     
-    <form action="" method="post"> <input type="submit" name="add_assignment" value="Tilføj opgave til projektet"></form>
-   
+    <?php 
+    if ($leader == $_SESSION['user'] )
+    {
+        ?><form action="" method="post"> <input type="submit" name="add_assignment" value="Tilføj opgave til projektet"></form><?php
+    }
+    ?>
 </table>
 
