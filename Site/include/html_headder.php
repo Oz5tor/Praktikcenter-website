@@ -101,7 +101,7 @@ if(isset($admin)){
     <script src="froala_editor/js/plugins/video.min.js"></script>
     <script src="froala_editor/js/libs/beautify/beautify-html.js"></script>
 	<script src="froala_editor/js/froala_editor.min.js"></script>
-    <!-- <script src="froala_editor/js/plugins/media_manager.min.js"></script> -->
+    <script src="froala_editor/js/plugins/media_manager.min.js"></script>
     <script>
         $(function()
         {
@@ -127,11 +127,11 @@ if(isset($admin)){
                 borderColor: '#000000',
                 language: 'da',
                 imageUploadURL: 'upload.php',
-                imagesLoadURL: '/uploads',
-                //imagesLoadURL: '/load_images.php',
-                //imageDeleteURL: 'delete_image.php',
+                //imagesLoadURL: 'load_images.php',
+                //imageDeleteURL: 'delete_images.php',
                 inlineMode: false,
                 imageResize: true,
+                mediaManager: true,
             })
         });
 
