@@ -17,21 +17,14 @@ if (isset($_POST['Submit']))
 		//$pass = md5($pass);
         $pass = hash('sha512', $pass);
 		$query="SELECT * FROM user WHERE email ='$username' && password ='$pass'";
-        
-        //$query="SELECT * FROM user WHERE username ='$username' && pass ='$pass'";
 		$result=mysqli_query($db_conn,$query) or die (mysqli_error($db_conn));
 		if (mysqli_num_rows($result)==1)
 		{
 			$row = mysqli_fetch_assoc($result);
 			$user_id = $row['id'];
+            $fk_roleId = $row['fk_role_id'];
 			// hvis login lykkes så opretes der $_SESSION's
 			$_SESSION['user']	= $user_id;
-            
-            $roles_sql = "Select * from userRoles WHERE userId = '$user_id'";
-            $roles_result=mysqli_query ($db_conn,$roles_sql) or die (mysqli_error($db_conn));
-            while ($roles_row = mysqli_fetch_assoc($roles_result))
-			{
-                $fk_roleId = $roles_row['roleId'];
                 $perm_id_sql = "SELECT * FROM rolesPermissions WHERE rolesId = '$fk_roleId'";
                 $perm_id_result = mysqli_query ($db_conn,$perm_id_sql) or die (mysqli_error($db_conn));
                 while($perm_id_row = mysqli_fetch_assoc($perm_id_result))
@@ -42,10 +35,8 @@ if (isset($_POST['Submit']))
                     while($perm_row = mysqli_fetch_assoc($perm_result))
                     {
                         $_SESSION[$perm_row['perName']] = 1;
-                    }
-                    
+                    }   
                 }
-            }
             header("Location: index.php?page=$page");
 		} else {
             $bo = 'Der findes ikke nogen bruger med det password';

@@ -13,10 +13,9 @@
                 <tr>
                     <td><b>Funktion: </b></td>
                     <?php 
-                         $role_sql ="Select * From user
-                                        Inner Join userRoles On user.id = userRoles.userId 
-                                        Inner Join roles On roles.id = userRoles.roleId
-                                        Where userid ='$id' Order By roleRank ASC";
+                         $role_sql ="Select user.fk_role_id, roles.id, roles.name, user.id As id1 From user
+                Inner Join roles On roles.id = user.fk_role_id
+                Where user.id = '$id'";
                         $role_result = mysqli_query($db_conn, $role_sql) or die (mysqli_error($db_conn));
                         $role_row = mysqli_fetch_assoc($role_result); 
                         ?>
