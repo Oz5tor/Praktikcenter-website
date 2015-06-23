@@ -44,12 +44,16 @@ if(isset($page) == "Forside")
             $temp_filename = 'include/Project_Handling/Create_assignment.php';
             break;
         case 'Projekt Skabeloner':
-            include_once('include/Project_Handling/Activate_proTemp.php');
-            $temp_filename = 'include/Project_Handling/Activate_proTemp.php';
-            break;
-        case 'Projekt Skabeloner info':
             include_once('include/Project_Handling/ProTemp_details.php');
             $temp_filename = 'include/Project_Handling/ProTemp_details.php';
+            break;
+        case 'Projekt Skabeloner info':
+            include_once('include/Project_Handling/Activate_proTemp.php');
+            $temp_filename = 'include/Project_Handling/Activate_proTemp.php';
+            break; 
+        case 'Permissions':
+            include_once('include/administartion/Permissions/Permissions_Administration.php');
+            $temp_filename = 'include/administartion/Permissions/Permissions_Administration.php';
             break;   
     }
 // ==========================================================
@@ -106,5 +110,6 @@ echo $temp_filename;
     <fieldset>
     <legend>Midlertidige administrations links</legend>
     <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
+    <a href="index.php?administration=Permissions">Permissions</a><br>
 </fieldset>
 </div>
