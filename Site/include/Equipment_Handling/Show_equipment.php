@@ -47,11 +47,11 @@
     <hr>
     <table border="0" width="755">
         <tr class="uneven">
-        <th align="center">SN</th>
-        <th align="center">Producent</th>
-        <th align="center">Type</th>
-        <th align="center">Beskrivelse</th>
-        <th align="center">Lokation</th>
+            <th align="center">SN</th>
+            <th align="center">Producent</th>
+            <th align="center">Type</th>
+            <th align="center">Beskrivelse</th>
+            <th align="center">Lokation</th>
         </tr>
         <?php
         if(isset($_POST['show_info'])){
