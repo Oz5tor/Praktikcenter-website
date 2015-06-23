@@ -110,6 +110,6 @@ echo $temp_filename;
     <fieldset>
     <legend>Midlertidige administrations links</legend>
     <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
-    <a href="index.php?administration=Permissions">Permissions</a><br>
+    <a href="index.php?administration=Permissions">Permissions <b>WIP</b></a><br>
 </fieldset>
 </div>
