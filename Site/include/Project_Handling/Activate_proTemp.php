@@ -11,7 +11,8 @@ while ($row = mysqli_fetch_assoc($proTemp_sql_result)){
     $instName = $row['fName']." ".$row['lName'];
 }
 
-$proTemp_sql_state = "select * from proTemp";
+//laver dataudtræk fra database til senere brug
+$proTemp_sql_state = "select * from proTemp where id = $proTempId";
 $proTemp_sql_result = mysqli_query($db_conn, $proTemp_sql_state) or die (mysqli_error($db_conn));
 
 while ($row = mysqli_fetch_assoc($proTemp_sql_result)){
@@ -20,24 +21,32 @@ $proTempDescription= $row['description'] ;
 $proTempId = $row['id'];
 }
 
-
-
 //Indsætter nyaktiveret projekt ind i databasen
-if(isset($_POST['activateProject']))
+if(isset($_POST['activateProject'])){    
+    $proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
+    $start          = mysqli_real_escape_string($db_conn,strip_tags($_POST['projektStart'])); 
+    $slut           = mysqli_real_escape_string($db_conn,strip_tags($_POST['projektSlut'])); 
+    $proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
+    $proStart       = strtotime($start);
+    $proSlut        = strtotime($slut);
+    $members      = $_POST['members'];
+    print_r($members);
+    // ===============================================================================
+    $sqlState   ="insert into project(name, leaderId, inst, start, end,FK_Protemp) 
+                    values('$proTempName','$proLeader','$instId','$proStart','$proSlut','$proTempId');";
+    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
     
-{    
-$proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
-$start          = mysqli_real_escape_string($db_conn,strip_tags($_POST['projektStart'])); 
-$slut           = mysqli_real_escape_string($db_conn,strip_tags($_POST['projektSlut'])); 
-$proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
-$proStart       = strtotime($start);
-$proSlut        = strtotime($slut);
-// ===============================================================================
-$sqlState   ="insert into project(name, leaderId, inst, start, end,FK_Protemp) values('$proTempName','$proLeader','$instId','$proStart','$proSlut','$proTempId');";
-mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+    $temp_sql = "SELECT * FROM project ORDER by id DESC limit 1";
+    $temp_reslut = mysqli_query($db_conn, $temp_sql) or die(mysqli_error($db_conn));
+    $temp_row = mysqli_fetch_assoc($temp_reslut);
+    $last_id = $temp_row['id'];
+    
+    foreach($members as $member){
+        $add_member = "INSERT INTO userProject (userId, projectId) values('$member','$last_id')";
+        mysqli_query($db_conn, $add_member) or die(mysqli_error($db_conn));
+    }
+    
 }
-//laver dataudtræk fra database:
-
 ?>
 <h1><?php echo $proTempName;?></h1>
 <form method="post" action="">
@@ -47,7 +56,7 @@ mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
                 <b>Instruktør: </b>
             </td>
             <td><?php echo $instName; ?></td>
-            <td><b>Besrivelse: </b></td>
+            <td colspan="2"><b>Besrivelse: </b></td>
         </tr>
         <tr>
             <td><b>Projektleder: </b></td>
@@ -68,7 +77,7 @@ mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
         </tr>
         <tr>
             <td><b>Elever:</b></td>
-            <td colspan="2">
+            <td colspan="3">
                 <section class="container">
                     <div>
                         <!-- List of students start -->
@@ -92,7 +101,7 @@ mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
                         <input type="button" id="btnRight" value="&gt;&gt;" />
                     </div>
                     <div>
-                        <select id="rightValues" size="4" multiple></select>
+                        <select id="rightValues" name="members[]" size="4" multiple></select>
                     </div>
                 </section>
             </td>
