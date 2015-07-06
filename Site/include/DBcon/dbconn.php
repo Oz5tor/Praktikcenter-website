@@ -1,5 +1,5 @@
 <?php 
-    $db_host="192.168.0.4"; // Host name
+    $db_host="192.168.4.10"; // Host name
     $db_username="c1root"; // Mysql username
     $db_password="A123linux2013"; // Mysql password
     $db_name="c1praktikcenter"; // Database name
