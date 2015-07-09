@@ -38,8 +38,12 @@ if(isset($_POST['activateProject'])){
     $temp_reslut = mysqli_query($db_conn, $temp_sql) or die(mysqli_error($db_conn));
     $temp_row = mysqli_fetch_assoc($temp_reslut);
     $last_id = $temp_row['id'];
-    
-    foreach($_POST['members'] as $member){
+    $members = array();
+    foreach($_POST['members'] as $key){
+        $members[] .= $key;
+    }
+     $members[] .= $proLeader;
+    foreach($members as $member){
         $add_member = "INSERT INTO userProject (userId, projectId) values('$member','$last_id')";
         mysqli_query($db_conn, $add_member) or die(mysqli_error($db_conn));
     }
