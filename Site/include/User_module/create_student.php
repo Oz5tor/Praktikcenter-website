@@ -5,15 +5,14 @@ if(isset($_POST['create_user'])){
 $fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
 $lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
 $add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
-$bday       = mysqli_real_escape_string($db_conn,strip_tags($_POST['datepicker']));
+$bday       = strtotime($_POST['datepicker']);
 $inst       = mysqli_real_escape_string($db_conn,strip_tags($_POST['inst']));
 $phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
 $email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
 $edu        = mysqli_real_escape_string($db_conn,strip_tags($_POST['edu']));
-$eduEnd     = mysqli_real_escape_string($db_conn,strip_tags($_POST['eduEnd']));
+$eduEnd     = strtotime($_POST['edu_datepicker']);
 $password   = hash('sha512', 'abc1234');
 $maincurse  = mysqli_real_escape_string($db_conn,strip_tags($_POST['maincurse']));
-
 $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,edu,eduEnd,maincurse,fk_role_id) values('$password','$fName','$lName','$email',$phone,'$add','$bday',$edu,'$eduEnd','$maincurse', '1')";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ===============================================================================
@@ -21,14 +20,13 @@ $sqlState   = "select id from user where email = '$email'";
 $sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 $row = mysqli_fetch_assoc($sql_result);
        $user_id= $row['id'];
-// ===============================================================================
-$sqlState   ="insert into userRoles values('$user_id',1)";
-mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ==============================================================================
-    foreach(mysqli_real_escape_string($db_conn,strip_tags($_POST['skills'])) as $key){       
+    foreach($_POST['skills'] as $key){       
         $sqlState   = "insert into userSkills(userId,skillId) values($user_id,$key)";
         mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
     }
+    sleep(2);
+    header("location:index.php?page=Profil&id=$user_id");
 }
 // ===============================================================================
 ?>

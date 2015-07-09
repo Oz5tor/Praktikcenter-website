@@ -1,11 +1,24 @@
 <?php 
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
+if(isset($_POST['create_user'])){
+    $fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
+    $lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
+    $add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
+    $bday       = strtotime($_POST['datepicker']);
+    $phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
+    $email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
+    $password   = hash('sha512', 'abc1234');
     
+    $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,fk_role_id)
+                            values('$password','$fName','$lName','$email',$phone,'$add','$bday','2')";
+    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+    $temp_respons = "Brugeren er opretted";
+    header('location:index.php');
 }
-    else {header('location: index.php');} 
+// ===============================================================================
 ?>
-
 <h1>Opret ny Instruktør</h1>
+<?php if(isset($temp_respons)){ echo $temp_respons;} ?>
 <form action="#" method="post">
     <table>
         <tr>
@@ -55,31 +68,6 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
     </table>
 </form>
 <?php
-if(isset($_POST['create_user']))
-{
-
-$fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
-$lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
-$add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
-$bday       = mysqli_real_escape_string($db_conn,strip_tags($_POST['datepicker']));
-$phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
-$email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
-$password   = hash('sha512', 'abc1234');
-    
-
-$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay,fk_role_id) values('$password','$fName','$lName','$email',$phone,'$add','$bday','2')";
-    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-// ===============================================================================
-$sqlState   = "select id from user where email = '$email'";
-
-$sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-// ===============================================================================                     
-$row = mysqli_fetch_assoc($sql_result);
-    
-       $user_id= $row['id'];
-        
-$sqlState   ="insert into userRoles values('$user_id',2)";
-    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 }
-// ===============================================================================
+    else {header('location: index.php');} 
 ?>

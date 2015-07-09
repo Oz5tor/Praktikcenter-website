@@ -1,13 +1,25 @@
-
 <?php 
 if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
-    
-}
-    else {header('location: index.php');} 
-?>
 
+    if(isset($_POST['create_user'])){
+
+        $fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
+        $lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
+        $add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
+        $bday       = strtotime($_POST['datepicker']);
+        $phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
+        $email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
+        $password   = hash('sha512', 'abc1234');
+
+        $sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay, fk_role_id)
+                                values('$password','$fName','$lName','$email',$phone,'$add','$bday','3')";
+        mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+        header('location:index.php');
+    }
+// ===============================================================================
+?>
 <h1>Opret ny Værkføre</h1>
-<form action="#" method="post">
+<form action="" method="post">
     <table>
         <tr>
             <td>Fornavn: </td>
@@ -55,31 +67,8 @@ if((isset ($_SESSION['user'])) && (isset($_SESSION['create_user']))){
         </tr>
     </table>
 </form>
-<?php
-if(isset($_POST['create_user']))
-{
-
-$fName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['fName']));
-$lName      = mysqli_real_escape_string($db_conn,strip_tags($_POST['lName']));
-$add        = mysqli_real_escape_string($db_conn,strip_tags($_POST['address']));
-$bday       = mysqli_real_escape_string($db_conn,strip_tags($_POST['datepicker']));
-$phone      = mysqli_real_escape_string($db_conn,strip_tags($_POST['phone']));
-$email      = mysqli_real_escape_string($db_conn,strip_tags($_POST['email']));
-$password   = hash('sha512', 'abc1234');
-    
-$sqlState   ="insert into user(password,fName,lName,email,phone,address,bDay, fk_role_id) values('$password','$fName','$lName','$email',$phone,'$add','$bday','3')";
-    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-// ===============================================================================
-$sqlState   = "select id from user where email = '$email'";
-
-$sql_result = mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
-// ===============================================================================                     
-$row = mysqli_fetch_assoc($sql_result);
-    
-       $user_id= $row['id'];
-        
-$sqlState   ="insert into userRoles values('$user_id',3)";
-    mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
+<?php 
 }
-// ===============================================================================
+    else {header('location: index.php');} 
 ?>
+
