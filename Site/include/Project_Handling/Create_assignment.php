@@ -2,7 +2,6 @@
 // ===============================================================================
 //Når brugeren har trykket på submint knappen vil denne kode blive eksekveret:
 if(isset($_POST['create_assignment']))
-    
 {
 $name           = mysqli_real_escape_string($db_conn,strip_tags($_POST['assignmentName']));
 $description    = mysqli_real_escape_string($db_conn,strip_tags($_POST['assignmentDescription']));
@@ -12,11 +11,11 @@ $FK_ProId       = mysqli_real_escape_string($db_conn,strip_tags($_GET['id']));
 $sqlState   ="INSERT INTO assignment(name, description, status, FK_ProId) VALUES ('$name','$description','$status','$FK_ProId')";
 mysqli_query($db_conn, $sqlState) or die (mysqli_error($db_conn));
 // ===============================================================================
-header("location:index.php?administration=Projekt Oversigt&projectId=$FK_ProId");
+header("location:index.php?page=Projekt Oversigt&projectId=$FK_ProId");
 }
 
 // ===============================================================================
-if((isset ($_SESSION['user'])){
+if(isset($_SESSION['user'])){
     ?>
 
 <h1>Opret ny Opgave</h1>
@@ -42,7 +41,6 @@ if((isset ($_SESSION['user'])){
             <td>
                 <select required name="status">
                     <option selected value="" >Status på opgave</option>
-                   
                         <option value=5>5%</option>;
                         <option value=10>10%</option>;
                         <option value=15>15%</option>;
@@ -63,7 +61,6 @@ if((isset ($_SESSION['user'])){
                         <option value=90>90%</option>;
                         <option value=85>95%</option>;
                         <option value=100>100%</option>;
-                      
                 </select>
             </td>            
         </tr>
@@ -78,7 +75,6 @@ if((isset ($_SESSION['user'])){
 
 
 <?php
-    
 }
     else {header('location: index.php');} 
 // ===============================================================================
