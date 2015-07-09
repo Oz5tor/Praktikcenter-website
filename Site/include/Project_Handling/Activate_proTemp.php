@@ -29,8 +29,6 @@ if(isset($_POST['activateProject'])){
     $proLeader      = mysqli_real_escape_string($db_conn,strip_tags($_POST['proLeader'])); 
     $proStart       = strtotime($start);
     $proSlut        = strtotime($slut);
-    $members      = $_POST['members'];
-    print_r($members);
     // ===============================================================================
     $sqlState   ="insert into project(name, leaderId, inst, start, end,FK_Protemp) 
                     values('$proTempName','$proLeader','$instId','$proStart','$proSlut','$proTempId');";
@@ -41,7 +39,7 @@ if(isset($_POST['activateProject'])){
     $temp_row = mysqli_fetch_assoc($temp_reslut);
     $last_id = $temp_row['id'];
     
-    foreach($members as $member){
+    foreach($_POST['members'] as $member){
         $add_member = "INSERT INTO userProject (userId, projectId) values('$member','$last_id')";
         mysqli_query($db_conn, $add_member) or die(mysqli_error($db_conn));
     }
