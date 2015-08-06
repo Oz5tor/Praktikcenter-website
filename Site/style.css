@@ -42,6 +42,30 @@ background:;
 	padding: 0;
 	border-top: 1px solid #000;
 }
+.textCenter{
+    text-align:center;
+}
+.div_float_left {
+    float: left;
+}
+.div_float_right {
+    float: right;
+}
+.div_clear_both {
+    clear: both;
+}
+.div_full_border{
+    border: solid 1px black;
+}
+.div_full_border_bottom{
+    border-bottom: solid 1px black;
+}
+.div_full_border_left{
+    border-left: solid 1px black;
+}
+.div_full_border-right{
+    border-right: solid 1px black;
+}
 /* ---------------		Many, oh so many boxes.		--------------- */
 #headertopspace {
 	height: 17px;
@@ -315,8 +339,3 @@ html {
 #vedr {
 	overflow-y: scroll
 }
-
-/*body {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:14px;
-}*/
