@@ -9,8 +9,9 @@
     background-color:darkgray;
 }
 </style>
+
 <div>
-    <div class="centerText"><h2>Praktikcenterts udstyrs liste</h2></div>
+    <div class="centerText"><h2>Praktikcenterets udstyrs liste</h2></div>
     <hr>
     <?php
         // Fetch all equipment types
@@ -47,10 +48,10 @@
     <hr>
     <table border="0" width="755">
         <tr class="uneven">
-            <th align="center">SN</th>
-            <th align="center">Producent</th>
             <th align="center">Type</th>
+            <th align="center">Producent</th>
             <th align="center">Beskrivelse</th>
+            <th align="center">Serie nummer</th>
             <th align="center">Lokation</th>
         </tr>
         <?php
@@ -67,7 +68,8 @@
                                   equipment.sn From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
-                                    where fk_prodId = '$producent' AND fk_eqTypeId = '$eqType'"; //WIP
+                                    where fk_prodId = '$producent' AND fk_eqTypeId = '$eqType'
+									Order By name2 ASC, name1 ASC, sn ASC"; //WIP
             } 
             // if producent isset
             elseif ($producent != 'producent') {
@@ -79,7 +81,8 @@
                                   equipment.sn From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
-                                    where fk_prodId = '$producent'"; //WIP
+                                    where fk_prodId = '$producent'
+									Order By name2 ASC, name1 ASC, sn ASC"; //WIP
             }
             // if product type isset
             elseif($eqType != 'eqType'){
@@ -91,8 +94,20 @@
                                   equipment.sn From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
-                                    where fk_eqTypeId = '$eqType'"; //WIP
+                                    where fk_eqTypeId = '$eqType'
+									Order By name2 ASC, name1 ASC, sn ASC"; //WIP
             }
+			else{
+            $Equip_sql = "Select  eqType.name,
+                                  producent.name As name1,
+                                  equipment.spec,
+                                  equipment.name As name2,
+                                  equipment.fk_prodId,
+                                  equipment.sn From equipment
+                                    Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
+                                    Inner Join producent On producent.id = equipment.fk_prodId
+									Order By name2 ASC, name1 ASC, sn ASC";
+			}
         }
         else{
             $Equip_sql = "Select  eqType.name,
@@ -102,7 +117,8 @@
                                   equipment.fk_prodId,
                                   equipment.sn From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
-                                    Inner Join producent On producent.id = equipment.fk_prodId";
+                                    Inner Join producent On producent.id = equipment.fk_prodId
+									Order By name2 ASC, name1 ASC, sn ASC";
         }
         $Equip_result = mysqli_query($db_conn, $Equip_sql) or die(mysqli_error($db_conn));
         $temp_counter = 1;
@@ -115,10 +131,11 @@
             }
         ?>
         <tr class="<?php echo $even_uneven; ?>">
-            <td><?php echo $Equip_row['sn']; ?></td>
-            <td><?php echo $Equip_row['name1']; ?></td>
             <td><?php echo $Equip_row['name']; ?></td>
+            <td><?php echo $Equip_row['name1']; ?></td>
+            
             <td><?php echo $Equip_row['spec']; ?></td>
+			<td><?php echo $Equip_row['sn']; ?></td>
             <td><?php //echo $Equip_row['']; ?></td>
         </tr>
         <?php
