@@ -68,7 +68,7 @@ if(isset($page) == "Forside")
         switch($page) {
         case 'Forside':
             include_once("include/news.php");
-            $temp_filename = 'include/Project_Handling/ProTemp_details.php';
+            $temp_filename = 'include/news.php';
             break;
         case 'Forum':
             $temp_filename = 'include/forum/forum_index.php';
