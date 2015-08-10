@@ -15,3 +15,20 @@ SECTION > DIV + DIV {
     width: 40px;
     text-align: center;
 }
+
+.project_holder {
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:5px;
+    width:365px; 
+    border:1px solid black;
+    float:left;
+    min-height:100px;
+}
+.project_headder {
+    width: 182px;
+}
+.text_padding {
+    padding-right:10px;
+    padding-left:10px;
+}

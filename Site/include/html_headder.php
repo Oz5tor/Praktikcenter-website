@@ -38,6 +38,9 @@ if(isset($admin)){
         case 'Projekt Skabeloner info':
             echo'<link href="include/Project_Handling/css/style.css" rel="stylesheet">';
             break;
+        case 'Projekt Skabeloner':
+            echo'<link href="include/Project_Handling/css/style.css" rel="stylesheet">';
+            break;
     }
 }
 if(isset($admin)){
