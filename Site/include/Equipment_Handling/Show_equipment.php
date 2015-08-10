@@ -10,6 +10,12 @@
 }
 </style>
 
+<?php
+if(isset($_POST['create_item'])){
+    header("lovation:?administration=Opret udstyr");
+}
+?>
+
 <div>
     <div class="centerText"><h2>Praktikcenterets udstyrs liste</h2></div>
     <hr>
@@ -42,8 +48,17 @@
                 }
             ?>
         </select>
-        <input type="submit" id="show_info" name="show_info" value="Find">  
+        <input type="submit" id="show_info" name="show_info" value="Find">
     </form>
+        <?php
+        if(isset($_SESSION['AddEquipment']) == 1)
+        {?>
+        <form method="post">
+            <input type="submit" id="create_item" name="create_item" value="Opret udstyr">  
+        </form>
+        <?php
+        }
+        ?>
     </div>
     <hr>
     <table border="0" width="755">
@@ -55,6 +70,9 @@
             <th align="center">Lokation</th>
         </tr>
         <?php
+        if  (isset($_POST['create_item'])){
+            
+        }
         if(isset($_POST['show_info'])){
             $eqType = $_POST['eqType'];
             $producent = $_POST['producent'];

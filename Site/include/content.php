@@ -55,6 +55,10 @@ if(isset($page) == "Forside")
             include_once('include/administartion/Permissions/Permissions_Administration.php');
             $temp_filename = 'include/administartion/Permissions/Permissions_Administration.php';
             break;   
+        case 'Opret udstyr':
+            $temp_filename = 'include/Equipment_Handling/Create_equipment.php';
+            include_once("include/Equipment_Handling/Create_equipment.php");
+            break;
     }
 // ==========================================================
     // Public pages
@@ -87,6 +91,7 @@ if(isset($page) == "Forside")
             $temp_filename = 'include/Equipment_Handling/Show_equipment.php';
             include_once("include/Equipment_Handling/Show_equipment.php");
             break;
+        
         case 'Projekt Oversigt':
             $temp_filename = 'include/Project_Handling/Index_project.php';
             include_once('include/Project_Handling/Index_project.php');
