@@ -53,6 +53,7 @@ background:;
 }
 .div_clear_both {
     clear: both;
+    display: block;
 }
 .div_full_border{
     border: solid 1px black;

@@ -59,6 +59,10 @@ if(isset($page) == "Forside")
             $temp_filename = 'include/Equipment_Handling/Create_equipment.php';
             include_once("include/Equipment_Handling/Create_equipment.php");
             break;
+        case 'Kompetancer for uddanelser':
+            $temp_filename = 'include/User_module/edu_competences.php';
+            include_once("include/User_module/edu_competences.php");
+            break;
     }
 // ==========================================================
     // Public pages
@@ -110,11 +114,13 @@ print_r($_SESSION);
 echo "</pre>";
 echo "<br />".time().'<br>';
 
+
 echo $temp_filename;
 ?>
     <fieldset>
     <legend>Midlertidige administrations links</legend>
     <a href="index.php?page=Udstyrs Liste">Udstyrs Liste</a><br>
+    <a href="index.php?administration=Kompetancer for uddanelser">Kompetancer for uddanelser</a><br>
     <a href="index.php?administration=Permissions">Permissions <b>WIP</b></a><br>
 </fieldset>
 </div>
