@@ -28,7 +28,7 @@
 .daysleft{
     float:left;
     padding:5px;
-    width:45%;
+    /*width:45%;*/
     height:45px;
     vertical-align:middle;
 }
