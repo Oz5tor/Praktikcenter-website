@@ -21,11 +21,12 @@ function countEquipment($Equip_result,$db_conn,$Equip_sql)
 <hr>
     <table border="0" width="755">
         <tr class="uneven">
-            <th align="center">Antal</th>
+            
             <th align="center">Type</th>
             <th align="center">Producent</th>
-            <th align="center">Beskrivelse</th>
             <th align="center">Produkt navn</th>
+            <th align="center">Beskrivelse</th>
+            <th align="center">Antal</th>
         </tr>
         <?php
     //Counting equipment
@@ -84,11 +85,12 @@ function countEquipment($Equip_result,$db_conn,$Equip_sql)
             }
         ?>
         <tr class="<?php echo $even_uneven; ?>">
-            <td><?php echo $name2_count[$count] ; ?></td>
+            
             <td><?php echo $type[$count]; ?></td>
             <td><?php echo $producent[$count]; ?></td>
-			<td><?php echo $spec[$count]; ?></td>
-            <td><?php echo $name2_temp[$count]; ?></td>
+			<td><?php echo $name2_temp[$count]; ?></td>
+            <td><?php echo $spec[$count]; ?></td>
+            <td><?php echo $name2_count[$count] ; ?></td>
         </tr>
         <?php
             $temp_counter++;
@@ -106,8 +108,9 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
         <tr class="uneven">
             <th align="center">Type</th>
             <th align="center">Producent</th>
-            <th align="center">Beskrivelse</th>
             <th align="center">Produkt navn</th>
+            <th align="center">Beskrivelse</th>
+            <th align="center">Lokation</th>
         </tr>
         <?php
     $temp_counter = 1;
@@ -118,19 +121,14 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
             }else{
                 $even_uneven = "even";
             }
-            if($Equip_row['name2']=="ThinkCentre M73"){
-                      $hello = "woop woop";
-            }
-            else{
-                $hello="nope";
-            }
-            
         ?>
         <tr class="<?php echo $even_uneven; ?>">
             <td><?php echo $Equip_row['name']; ?></td>
             <td><?php echo $Equip_row['name1']; ?></td>
-			<td><?php echo $Equip_row['spec']; ?></td>
-            <td><?php echo $Equip_row['name2']; ?></td>
+			<td><?php echo $Equip_row['name2']; ?></td>
+            <td><?php echo $Equip_row['spec']; ?></td>
+            
+            <td><?php echo $Equip_row['lokation']; ?></td>
         </tr>
         <?php
             $temp_counter++;
@@ -184,17 +182,7 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
         }
         ?>
     </div>
-    <?php
-    /*
-    <hr>
-    <table border="0" width="755">
-        <tr class="uneven">
-            <th align="center">Antal</th>
-            <th align="center">Type</th>
-            <th align="center">Producent</th>
-            <th align="center">Beskrivelse</th>
-            <th align="center">Produkt navn</th>
-        </tr>*/?>
+    <?php/?>
         <?php
         if  (isset($_POST['create_item'])){
             
@@ -209,7 +197,8 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
                                   equipment.spec,
                                   equipment.name As name2,
                                   equipment.fk_prodId,
-                                  equipment.sn From equipment
+                                  equipment.sn,
+                                  equipment.fk_department As lokation From equipment,
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
                                     where fk_prodId = '$producent' AND fk_eqTypeId = '$eqType'
@@ -224,7 +213,9 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
                                   equipment.spec,
                                   equipment.name As name2,
                                   equipment.fk_prodId,
-                                  equipment.sn From equipment
+                                  equipment.sn,
+                                  equipment.fk_department as lokation From equipment
+                                    Inner Join departments on equipment.fk_department = departments.name
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
                                     where fk_prodId = '$producent'
@@ -239,7 +230,8 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
                                   equipment.spec,
                                   equipment.name As name2,
                                   equipment.fk_prodId,
-                                  equipment.sn From equipment
+                                  equipment.sn,
+                                  equipment.fk_department As lokation From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
                                     where fk_eqTypeId = '$eqType'
@@ -253,7 +245,8 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
                                   equipment.spec,
                                   equipment.name As name2,
                                   equipment.fk_prodId,
-                                  equipment.sn From equipment
+                                  equipment.sn,
+                                  equipment.fk_department As lokation From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
 									Order By name2 ASC, name1 ASC, sn ASC";
@@ -267,7 +260,8 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
                                   equipment.spec,
                                   equipment.name As name2,
                                   equipment.fk_prodId,
-                                  equipment.sn From equipment
+                                  equipment.sn,
+                                  equipment.fk_department As lokation From equipment
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
 									Order By name2 ASC, name1 ASC, sn ASC";
