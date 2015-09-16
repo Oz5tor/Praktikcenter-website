@@ -37,7 +37,8 @@
                         } ?>
                         <ul>
                             <li>
-                                <a href="?page=<?php echo $page_row['menu_subcat_name']; ?>"><?php echo $nav_image.' '; echo $page_row['menu_subcat_name']; ?></a>
+                                <a href="?page=<?php echo $page_row['menu_subcat_name']; ?>&subpage=<?php echo $sub_row['menu_subcat_name']; ?>">
+                                                <?php echo $sub_row['menu_subcat_name']; ?></a>
                                 <ul>
                                 <?php
                                 $sub_nav_sql = "select * from main_menu_subsubcat Where fk_menu_subcat_id = '$sub_cat_id'";
