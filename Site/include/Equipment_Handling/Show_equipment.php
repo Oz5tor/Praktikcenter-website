@@ -14,6 +14,9 @@
 if(isset($_POST['create_item'])){
     header("location:?administration=Opret udstyr");
 }
+if(isset($_POST['show_gant'])){
+    header("location:?administration=Gant-diagram");
+}
 
 function countEquipment($Equip_result,$db_conn,$Equip_sql)
 {
@@ -138,6 +141,12 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
 }
 ?>
 <div>
+    <div style="position:relative" class="gantt" id="GanttChartDIV">
+        <script type="text/javascript">
+        var g= new JSGantt.GanttChart(document.getElementById('GanttChartDIV'), 'day');
+        </script>
+
+    </div>
     <div class="centerText"><h2>Praktikcenterets udstyrs liste</h2></div>
     <hr>
     <?php
@@ -149,6 +158,11 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
         $producent_result = mysqli_query($db_conn, $sql_producent) or die (mysqli_error($db_conn));
         // ===============================================================
     ?>
+    
+    
+    
+    
+    
     <div class="centerText">
         <form method="post">
         Type: 
@@ -177,6 +191,9 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
         ?>
         <form method="post">
             <input type="submit" id="create_item" name="create_item" value="Opret udstyr">  
+        </form>
+        <form method="post">
+            <input type="submit" id="show_gant" name="show_gant" value="Vis Gant-diagram">  
         </form>
         <?php
         }
@@ -215,7 +232,7 @@ function searchEquipment($Equip_result,$db_conn,$Equip_sql)
                                   equipment.fk_prodId,
                                   equipment.sn,
                                   equipment.fk_department as lokation From equipment
-                                    Inner Join departments on equipment.fk_department = departments.name
+                                    Inner Join departments on departments.id = equipment.fk_department
                                     Inner Join eqType On eqType.id = equipment.fk_eqTypeId 
                                     Inner Join producent On producent.id = equipment.fk_prodId
                                     where fk_prodId = '$producent'

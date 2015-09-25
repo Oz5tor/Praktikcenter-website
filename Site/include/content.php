@@ -63,6 +63,10 @@ if(isset($page) == "Forside")
             $temp_filename = 'include/User_module/edu_competences.php';
             include_once("include/User_module/edu_competences.php");
             break;
+        case 'Gant-diagram':
+            $temp_filename = 'include/Gantt_diagram/Show_gantt.php';
+            include_once("include/Gantt_diagram/Show_gantt.php");
+            break;
     }
 // ==========================================================
     // Public pages
@@ -100,10 +104,12 @@ if(isset($page) == "Forside")
             $temp_filename = 'include/Project_Handling/Index_project.php';
             include_once('include/Project_Handling/Index_project.php');
             break;
+        
         default: // for dynamic pages not yet created.
             $temp_filename = 'include/edit_pages.php';
             include_once("include/edit_pages.php");
             break;
+                
         }
     }
     ?>
