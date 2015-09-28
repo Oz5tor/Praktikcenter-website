@@ -1,4 +1,6 @@
-<?php include_once("include/html_headder.php") ?>
+<?php
+include_once("include/html_headder.php");
+?>
 <!-- bodywrap -->
 <div id="bodywrap" align="center">
     <!-- header -->

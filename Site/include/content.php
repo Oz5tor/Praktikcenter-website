@@ -118,7 +118,10 @@ if(isset($page) == "Forside")
 echo "<pre>";
 print_r($_SESSION);
 echo "</pre>";
-echo "<br />".time().'<br>';
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+echo "<br />".time().'<br />';
 
 
 echo $temp_filename;

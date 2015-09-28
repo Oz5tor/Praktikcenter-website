@@ -127,6 +127,21 @@ if(isset($admin)){
 
             })
         });
+        
+          $(function()
+        {
+            $('#protemplate').editable(
+            {
+                minHeight: 100,
+                width: 550,
+                borderColor: '#000000',
+                language: 'da',
+                imageUploadURL: 'upload.php',
+                imagesLoadURL: '/uploads',
+                inlineMode: false,
+
+            })
+        });
 
         $(function()
         {
