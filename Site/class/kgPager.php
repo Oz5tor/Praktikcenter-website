@@ -1,4 +1,4 @@
-﻿<?PHP
+<?PHP
 /*
 ########################################################################################################################
 #
@@ -7,7 +7,7 @@
 #   Version     : 2.0.1
 #   Requirement : PHP4 >
 #   Build Date  : December 17, 2007 - Monday
-#   Developer   : Muharrem ER&#304;N (T�RK&#304;YE) - info@muharremerin.com - muharremerin.com - mhrrmrnr.com - kisiselgunce.com
+#   Developer   : Muharrem ER&#304;N (TݒK&#304;YE) - info@muharremerin.com - muharremerin.com - mhrrmrnr.com - kisiselgunce.com
 #   Licence     : GNU General Public License (c) 2007
 #
 ########################################################################################################################
